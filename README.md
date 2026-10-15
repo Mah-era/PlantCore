@@ -2,6 +2,11 @@
 
 PlantCore is a production-management decision platform for multi-factory apparel networks. It connects order allocation, capacity planning, disruption recovery, accountable response, and continuous improvement in one desktop web application.
 
+- Repository: https://github.com/Mah-era/PlantCore
+- GitHub Pages project entry point: https://mah-era.github.io/PlantCore/
+
+The GitHub Pages URL is a static project entry point. The full interactive dashboard requires the FastAPI/SQLite runtime described below; GitHub Pages cannot execute that backend.
+
 A runnable, synthetic-data production management platform. Phase 1 connects order allocation, capacity planning, disruption detection, root-cause evidence, recovery economics, accountable actions, and PDCA verification in one local application.
 
 ## Run
