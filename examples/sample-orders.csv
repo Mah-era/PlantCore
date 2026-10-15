@@ -1,0 +1,4 @@
+order_id,customer,factory_id,factory_name,line_id,style_id,style_name,category,machine,smv,operators,efficiency,quantity,material_date,due_date,as_of,priority,quality_release,factory_cost,logistics_days,synthetic
+EXT-1001,Acme Retail,FX,Example Factory East,LX1,TSHIRT,Classic Tee,knit,flatlock,16,24,0.78,1800,2026-11-03,2026-11-10,2026-11-01,3,yes,4.70,2,yes
+EXT-1002,Acme Retail,FX,Example Factory East,LX1,TSHIRT,Classic Tee,knit,flatlock,16,24,0.78,800,2026-11-05,2026-11-18,2026-11-01,1,yes,4.70,2,yes
+EXT-1003,City Apparel,FY,Example Factory West,LY1,SHIRT,Woven Shirt,woven,lockstitch,23,32,0.74,1200,2026-11-04,2026-11-13,2026-11-01,2,no,4.20,3,yes
