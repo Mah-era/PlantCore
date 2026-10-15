@@ -1,26 +1,133 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PlantCore | Production Command</title><link rel="stylesheet" href="/app.css"></head>
-<body>
-<div class="shell">
-  <aside class="sidebar">
-    <div class="brand"><div class="brand-mark">P<span>C</span></div><div><strong>PLANT<br>CORE</strong><small>Multi-factory operations</small></div></div>
-    <div class="nav-label">WORKSPACE</div>
-    <nav id="nav">
-      <button data-page="overview" class="active"><span>◫</span> Control tower</button>
-      <button data-page="orders"><span>▤</span> Orders & allocation</button>
-      <button data-page="investigate"><span>◇</span> Disruption lab</button>
-      <button data-page="recovery"><span>↗</span> Recovery simulator</button>
-      <button data-page="warroom"><span>☷</span> Production war room</button>
-      <button data-page="improvement"><span>◎</span> PDCA & learning</button>
-    </nav>
-    <div class="sidebar-bottom"><div class="live-dot"></div><div><strong id="sidebarSource">Loading source</strong><small id="sidebarDate">Planning scenario · USD</small></div></div>
-  </aside>
-  <main class="main">
-    <header class="topbar"><div class="crumb">OPERATIONS <span>/</span> <span id="crumb-current">CONTROL TOWER</span></div><div class="top-actions"><button class="quiet small" onclick="showDefinitions()">KPI definitions</button><span class="scenario-badge" id="dataBadge">● SIMULATED DATA</span><span class="avatar">PM</span></div></header>
-    <div class="scenario-bar"><div class="scenario-description"><strong id="scenarioName">Loading scenario…</strong><small id="scenarioDescription">Select a test scenario or upload your own order file.</small></div><div class="scenario-tools"><select id="scenarioSelector" class="selector" aria-label="Select test scenario" onchange="changeScenario(this.value)"></select><label class="secondary upload-button" for="scenarioUpload">↑ Upload file<input id="scenarioUpload" type="file" accept=".json,.csv,.xlsx,application/json,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="uploadScenario(this.files[0])" hidden></label><a class="secondary template-link" href="/sample-orders.csv" download>↓ CSV template</a><select id="reportSelector" class="selector" aria-label="Download report" onchange="downloadReport(this.value);this.value=''"><option value="">↓ Download report…</option><option value="management.html">Management report · HTML</option><option value="management.json">Full report · JSON</option><option value="orders.csv">Order forecast · CSV</option><option value="scenario">Current scenario · JSON</option></select></div></div>
-    <div id="content" class="content"><div class="loading">Loading operational model…</div></div>
-  </main>
-</div>
-<div id="toast" role="status"></div>
-<script src="/app.js"></script>
-</body></html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#142b40" />
+    <title>PlantCore · Production intelligence</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="#overview" aria-label="PlantCore control tower"
+          ><div class="brand-mark">P<span>↗</span></div>
+          <div>
+            <strong>PlantCore</strong><small>PRODUCTION INTELLIGENCE</small>
+          </div></a
+        >
+        <div class="nav-label">MONITOR & PLAN</div>
+        <nav id="nav">
+          <button data-page="overview"><span>◫</span> Control tower</button>
+          <button data-page="network">
+            <span>⌘</span> Factory intelligence
+          </button>
+          <button data-page="schedule">
+            <span>▥</span> Capacity & schedule
+          </button>
+          <button data-page="orders"><span>▤</span> Order portfolio</button>
+          <div class="nav-label">INVESTIGATE & RESPOND</div>
+          <button data-page="investigate">
+            <span>◇</span> Disruption intelligence
+          </button>
+          <button data-page="recovery"><span>↗</span> Recovery studio</button>
+          <button data-page="warroom">
+            <span>☷</span> Execution workspace
+          </button>
+          <div class="nav-label">IMPROVE & GOVERN</div>
+          <button data-page="improvement">
+            <span>◎</span> Continuous improvement
+          </button>
+          <button data-page="governance">
+            <span>▧</span> Data & decision ledger
+          </button>
+        </nav>
+        <div class="sidebar-bottom">
+          <span class="live-dot"></span>
+          <div>
+            <strong id="sidebarSource">Loading source</strong
+            ><small id="sidebarDate">Scenario planning · USD</small>
+          </div>
+        </div>
+        <div class="sidebar-version">
+          PlantCore / Operations workspace <b>02</b>
+        </div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="crumb">
+            WORKSPACE <span>/</span>
+            <span id="crumb-current">CONTROL TOWER</span>
+          </div>
+          <div class="top-actions">
+            <button class="quiet small" onclick="showDefinitions()">
+              Metric dictionary</button
+            ><button class="quiet small" onclick="go(state.page)">
+              ↻ Refresh</button
+            ><span class="scenario-badge" id="dataBadge">SIMULATED DATA</span
+            ><span
+              class="avatar"
+              title="Local planning workspace; authentication not configured"
+              >PM</span
+            >
+          </div>
+        </header>
+        <div class="scenario-bar">
+          <div class="scenario-description">
+            <span class="source-label">ACTIVE DATASET</span
+            ><strong id="scenarioName">Loading scenario…</strong
+            ><small id="scenarioDescription"></small>
+          </div>
+          <div class="scenario-tools">
+            <select
+              id="scenarioSelector"
+              class="selector"
+              aria-label="Select test scenario"
+              onchange="changeScenario(this.value)"
+            ></select
+            ><label class="secondary upload-button" for="scenarioUpload"
+              >↑ Import data<input
+                id="scenarioUpload"
+                type="file"
+                accept=".json,.csv,.xlsx"
+                onchange="uploadScenario(this.files[0])"
+                hidden /></label
+            ><select
+              id="reportSelector"
+              class="selector"
+              aria-label="Download report"
+              onchange="
+                downloadReport(this.value);
+                this.value = '';
+              "
+            >
+              <option value="">↓ Export report</option>
+              <option value="management.html">Management report · HTML</option>
+              <option value="management.json">Full evidence pack · JSON</option>
+              <option value="orders.csv">Order forecast · CSV</option>
+              <option value="scenario">Working scenario · JSON</option>
+            </select>
+          </div>
+        </div>
+        <div id="content" class="content">
+          <div class="loading">Loading connected operational model…</div>
+        </div>
+        <footer class="workspace-footer">
+          <span>PlantCore · Connected production decisions</span
+          ><span
+            >Forecasts are scenario estimates · USD ·
+            <button class="link" onclick="go('governance')">
+              Source & assumptions ↗
+            </button></span
+          >
+        </footer>
+      </main>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="workspaceDialog" aria-labelledby="dialogTitle">
+      <div id="dialogContent"></div>
+    </dialog>
+    <script src="/app.js"></script>
+    <script src="/enterprise.js"></script>
+  </body>
+</html>

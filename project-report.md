@@ -5,10 +5,12 @@
 **Report date:** 15 October 2026 (Asia/Dhaka)  
 **Repository:** `mah-era/PlantCore`  
 **Application:** local FastAPI web application with SQLite persistence and a desktop-oriented dashboard  
-**Implementation status:** Phase 1 prototype; the full original vision remains a phased roadmap  
+**Implementation status:** Version 0.2 professional desktop decision workspace; production deployment gates remain explicit
 **Data status:** packaged examples and 20 scenario files are synthetic; uploaded files may be user supplied and retain their own synthetic label
 
 This report records the business concept, the software that exists, its data and calculations, the user workflow, the validation performed, and the remaining gaps. “Implemented” means there is corresponding executable code in this repository. It does not mean a live factory integration or production deployment. All dates, prices, capacity, probability, and performance values from packaged examples are simulated.
+
+> **Current release:** Chapter 18 documents the version 0.2 transformation and supersedes implementation-status claims in the retained earlier record (chapters 1–17). The current full requirement review is in [docs/requirement-coverage.md](docs/requirement-coverage.md).
 
 ## 1. Executive summary
 
@@ -528,3 +530,258 @@ The original brief’s KPI list is wider than the current implementation. The fo
 At present there is one automated `unittest` command and manual desktop browser inspection; there is no CI pipeline enforcing it on every change. No benchmark threshold is enforced for compute time. The SQLite database file is mutable local state and should not be treated as a reproducible fixture; the seed generator and scenario JSON files provide reproducibility. The current process lacks structured logging, centralized error reporting, request correlation IDs, and a health/readiness endpoint.
 
 For future changes, a developer should run the 62-test suite, validate the 20 scenario documents, exercise one CSV and one XLSX import, compare dashboard/JSON/CSV values after scenario switching, and inspect the affected desktop flow in the browser. An API change should update both the endpoint reference here and the generated/OpenAPI contract. Any formula change should carry a worked example or invariant test and should version its assumptions so older recorded decisions remain interpretable. A production release additionally needs security, data provenance, calibration, and operational acceptance described above.
+
+## 18. Version 0.2 — professional workspace transformation
+
+### 18.1 Release purpose and status
+
+Version 0.2 changes the product structure, analytics, operating workflows, and development controls. It is not solely a visual update. The work retains the original constraint-aware scheduler while adding a reconciled analytics layer, an operating-event ledger, controlled source-data updates, uncertainty experiments, measured persistence checkpoints, and nine desktop workspaces.
+
+The detailed requirement reconciliation is maintained in [docs/requirement-coverage.md](docs/requirement-coverage.md). That document explicitly distinguishes working capabilities from partial coverage and outstanding production gates. The application remains a local single-user planning system; it must not be represented as an authenticated enterprise production service.
+
+Sections 1–17 preserve the previous implementation record. Where they describe absent capabilities such as event auditing, Monte Carlo, measured persistence checkpoints, CI, or health checks, this version 0.2 chapter supersedes them. The original business requirements and limitations not addressed here remain relevant.
+
+### 18.2 Information architecture
+
+The interface now separates three management activities:
+
+1. **Monitor and plan:** Control tower, Factory intelligence, Capacity & schedule, Order portfolio.
+2. **Investigate and respond:** Disruption intelligence, Recovery studio, Execution workspace.
+3. **Improve and govern:** Continuous improvement, Data & decision ledger.
+
+Every workspace has a question it answers. The control tower identifies exceptions; factory intelligence compares performance; scheduling explains resource reservations; recovery compares operating and commercial trade-offs; execution assigns accountability; improvement evaluates evidence; governance exposes provenance, assumptions and changes. The global dataset selector, import control, export menu, planning date and source label remain consistent across pages.
+
+### 18.3 Design system and visual behavior
+
+The desktop design uses a navy navigation rail, slate typography, white analytical surfaces, restrained teal for favorable performance, amber for caution, and muted red for delivery/quality exposure. System fonts replace externally loaded fonts. Page headings, section titles, KPI labels, financial values, captions, tables and form fields follow a consistent hierarchy. Number formatting uses USD, explicit percentages and grouped units.
+
+The desktop minimum width is 1120 pixels; validation included a 1440 × 1000 viewport. Mobile design is intentionally excluded in accordance with the user’s request. Keyboard focus outlines, accessible dialog titles, text status labels, chart titles, SVG labels and tooltips support usability. This is not a claim of completed WCAG conformance testing.
+
+Browser prompt/confirm workflows for actions, commitments and rule review have been replaced by structured dialogs. A rejected management rule is an explicit choice, not the side effect of cancelling a confirmation. Forms retain input when server validation fails and show the error inside the dialog. Mutation controls disable during submission.
+
+### 18.4 Purpose and provenance of each visualization
+
+| Visual | Analytical purpose | Data and interpretation |
+| --- | --- | --- |
+| Output/target lines | Identify production shortfalls through time | Supplied historical production, through the planning date; zero-based units |
+| Factory exposure bars | Prioritize partner-level delivery decisions | Modeled order exposure summed to the planned factory |
+| Delivery status strip | Show portfolio composition | On-time, late and blocked order counts; no probability mixing |
+| Material/quality gate bars | Identify prerequisites preventing production | Material and quality counts may overlap |
+| Quality/adherence lines | Compare output quality and plan adherence | Observed ratios, not factory input ratings |
+| Downtime contribution and cumulative table | Prioritize cause investigation | Cause-coded downtime minutes; association is not causal confirmation |
+| Capacity heatmap | Locate competing line/day reservations | In-house SMV minutes plus changeover divided by available minutes |
+| Production Gantt | Explain stage timing and customer deadlines | Forecast stage spans, including queues and non-working time |
+| Planned WIP lines | Reveal stage inventory and shipment waiting | Cumulative scheduled cutting less packing; packed less shipped |
+| Recovery cost composition | Explain what drives each alternative’s total | Extra spend, penalty, margin, quality and displacement components |
+| Cost/delivery bubble chart | Compare competing objectives | Expected total impact, on-time probability and quality-risk bubble size |
+| Monte Carlo quantiles | Test shipment variability and cost tails | 2,000 repeatable synthetic shipment-date shocks per feasible alternative |
+| RACI matrix | Make responsibility and accountability visible | Action owners and accountable roles, alongside due dates/dependencies |
+| PDCA recurrence lines | Compare measured checks with baseline/target | Recorded observations and context; no automatic causal attribution |
+| Policy benchmark bars | Compare simple scheduling approaches | Same source scenario and explicit heuristic assumptions |
+
+No chart substitutes synthetic history for an upload that contains only orders. Empty states explain the missing evidence. Factory charts and order drilldowns use the planned assignment, including recorded allocation changes.
+
+### 18.5 Reservation-level schedule transparency
+
+The scheduling engine now exposes two complementary reservation records for every feasible order:
+
+- `daily`: sewing date, units, offered unit capacity, available minutes, reserved in-house minutes, and outsourced units.
+- `stages`: stage name, production date, and reserved units for cutting, finishing, inspection and packing.
+
+Factory-stage records are obtained by subtracting the pre-order reservation map from the tentative post-order map before committing it. Thus, each order’s stage record contains its own units instead of the factory’s accumulated workload. Infeasible orders continue to release all tentative reservations.
+
+The analytics heatmap aggregates each line/date once. Its numerator includes first-day changeover and in-house sewing minutes. Its denominator is that day’s offered capacity, including a selected recovery uplift when applicable. Subcontracted units are exposed separately and are not counted as internal minute consumption. Zero-capacity dates appear unavailable instead of zero utilization.
+
+The benchmark utilization calculation was also changed to unique line/day minutes. It no longer repeatedly adds an entire day’s capacity for every order sharing that day.
+
+### 18.6 Planned work-in-progress accounting
+
+For each date in a 42-day analytical horizon, PlantCore aggregates cumulative scheduled quantities:
+
+- Cutting completed.
+- Sewing completed.
+- Finishing completed.
+- Inspection completed.
+- Packing completed.
+- Full-order shipment completed according to the modeled shipment date.
+
+Derived balances are:
+
+```text
+Cut queue            = cumulative cutting − cumulative sewing
+Sew queue            = cumulative sewing − cumulative finishing
+Finish queue         = cumulative finishing − cumulative inspection
+Inspection queue     = cumulative inspection − cumulative packing
+Ready to ship        = cumulative packing − cumulative shipped
+Planned production WIP = cumulative cutting − cumulative packing
+```
+
+The schedule’s stage precedence keeps these balances nonnegative. The chart explicitly identifies them as planned balances. They do not establish actual factory WIP or actual stage completion.
+
+### 18.7 Portfolio exposure and factory QCD
+
+For a feasible order, delivery slack is its customer deadline minus its modeled shipment date, in calendar days. The illustrative full-order on-time probability is:
+
+```text
+P(on time) = normal_CDF((slack_days + 0.5) / 1.8)
+Expected exposure = quantity × (1.15 + 0.18 × margin_per_unit) × (1 − P(on time))
+```
+
+Blocked orders have no supported shipment probability and use the full penalty/margin exposure assumption for prioritization. They are not labeled as having a measured 0% shipment likelihood. Network exposure is the sum of order exposure; factory exposure is the same sum grouped by planned factory. This also aligns incident commercial exposure with the portfolio calculation.
+
+Modeled manufacturing cost and target variance are available per order:
+
+```text
+Manufacturing proxy = quantity × (factory cost + style SMV × 0.15)
+Target variance = manufacturing proxy − supplied target cost
+```
+
+Blocked orders are excluded from planned manufacturing totals. These values are not accounting records. The factory analysis additionally calculates observed first-pass yield, rework/output, actual/target, aggregate present/scheduled attendance, recorded downtime minutes, active units, late/blocked counts, and forecast OTIF. All historical data is restricted to dates at or before the scenario planning date.
+
+### 18.8 Operational release and allocation controls
+
+An order’s detail page now supports a release-change form covering fabric date, trim date, outstanding shortage and quality-release status. The user records an owner and supporting evidence. Quality release explicitly closes the order’s open inspection holds. The order’s material-release prerequisite follows the updated fabric/trim dates.
+
+After saving, the entire network is rescheduled. This matters because clearing one order can consume capacity previously available to another. The user sees the revised forecast, assignment, gates and connected incident records.
+
+A separate allocation approval form lists feasible candidate lines, forecast shipment and the number of other orders delayed. Approval retains every candidate, selected line, approver name and rationale, then reruns the complete schedule. Incompatible or blocked allocations are rejected on the server as well as excluded from the selectable list.
+
+Chronology is respected between allocation approvals and subsequent recovery decisions. Recovery alternatives retain their exact operating override so that replay uses the approved line, lead time, overtime, repair, subcontract or freight configuration. Source-level changes do not erase the original derived investigation history.
+
+### 18.9 Operating-event ledger
+
+A new SQLite table, `workflow_events`, stores:
+
+| Field | Purpose |
+| --- | --- |
+| `id` | Monotonic event identifier |
+| `scenario_id` | Isolates the event to the selected scenario |
+| `kind` | Release, allocation, hypothesis, action, update, negotiation, pilot, checkpoint or review |
+| `entity_id` | Related order, incident, action or rule |
+| `actor` | Recorded responsible person or role |
+| `evidence` | Supporting explanation |
+| `payload` | Structured JSON with the change, alternatives or measured result |
+| `created_at` | Timestamp with microsecond precision for new records |
+
+Release and allocation changes replay into the working model. Custom actions join the response plan. Verified investigation records provide the retained verification statement. Event rows are append-only through the application API. This is an application history, not tamper-evident storage: someone with direct SQLite access can alter the database, and actor names are not authenticated.
+
+Recovery decisions and factory commitments remain in their dedicated tables and are inserted atomically. The detailed JSON evidence pack includes those records alongside workflow events, rules, PDCA observations, analytics and definitions.
+
+### 18.10 Structured investigations
+
+The investigation form records a cause statement, one of six fishbone dimensions, an evidence classification, up to five Why steps, verification text, supporting evidence and an owner.
+
+Supported classifications are unverified hypothesis, contributing factor, rejected hypothesis, and verified root cause. A verified cause requires a substantive verification method/result. The system does not elevate a Pareto association to a verified cause automatically. The fishbone map and chronological evidence cards expose the classification directly.
+
+Evidence is currently text. Uploading a spreadsheet is data import, not an evidence-attachment system. Binary files, immutable evidence URLs, cause-taxonomy versioning and formal causal inference remain outstanding.
+
+### 18.11 Recovery, negotiation and uncertainty
+
+Recovery alternatives expose both operational feasibility and expected financial consequences. The interface now provides a component comparison and a cost/delivery/quality relationship chart before the detailed option cards.
+
+Supplier negotiation is a separately recorded proposal:
+
+```text
+Supplier contribution = incremental operating spend × supplier share
+Buyer expected impact = gross modeled impact − supplier contribution + buyer concession
+```
+
+The gross cost remains visible. A proposal does not silently apply an operating plan or claim supplier acceptance. The operating plan still requires the existing approval and written factory commitment workflow.
+
+The former unsupported partial-tranche probability uplift was removed. Negotiated partial-delivery terms now explicitly disclose a commercial sensitivity assumption: a 55% reduction of modeled penalty and margin exposure, with the full-order schedule unchanged. A real partial shipment requires a tranche-level schedule and customer acceptance; neither is implied by this commercial case.
+
+The simulation uses 2,000 common normal shipment-date shocks with seed 57. The default standard deviation is 1.8 days and can be varied from 0.1 to 10 days. Common draws make comparisons repeatable. Date shocks are rounded to calendar days; simulated arrival cannot precede the planning date. Each option returns the fraction of on-time trials, shipment P10/P50/P90, mean modeled cost and cost P10/P90. P10/P90 enclose the central 80% of the modeled outcomes. Quality and displacement costs remain fixed expectations. This is a sensitivity experiment rather than a validated prediction interval.
+
+### 18.12 Response execution
+
+Users can create an action with a responsible owner, exactly one accountable field, consulted and informed participants, due date, prerequisite, and evidence. Prerequisites must belong to the same incident. Completion requires the prerequisite to be complete. A completed prerequisite cannot be reopened while a completed dependent action still relies on it; the dependent action must be reopened first.
+
+The workspace shows overdue and dependency-blocked actions, recorded decisions, factory commitments and a responsibility matrix. Commitment updates record open/fulfilled/missed status and require an actual fulfillment date for fulfilled commitments. These are recorded managerial controls; external escalations and notifications are not sent.
+
+### 18.13 Measured PDCA persistence
+
+Version 0.2 adds an evidence-based pilot record beyond the original freeform PDCA journal. Starting a recurrence pilot requires an incident with a verified cause and a nonzero historical recurring-downtime baseline. The pilot retains intervention start, baseline, owner, evidence and target reduction.
+
+A checkpoint records a real or explicitly synthetic observation period, number of production days, matching line downtime events, daily volume, average style SMV, first-pass yield, owner and evidence. Production days cannot exceed calendar days in the observation interval. Non-synthetic observations cannot end in the future.
+
+Assessment rules are explicit:
+
+1. Event rate = events / observed production days.
+2. Volume must be within 20% of baseline.
+3. Style SMV must be within 10% of baseline.
+4. First-pass yield may not deteriorate by more than one percentage point from baseline.
+5. Event rate must meet the retained pilot target.
+
+Incomparable production produces an inconclusive assessment. A recurrence or quality failure requests reopening the intervention. Successful evidence is assigned to windows 30–59, 60–89 and 90–119 days after intervention start. All three windows must have successful observations before the system displays sustained observation. The latest check in a window can invalidate an earlier success.
+
+This process evaluates reported observations; it does not automatically prove the intervention caused the result. Alternative causes, valid cause matching, actual output evidence and factory acceptance still require review.
+
+### 18.14 Imports, missing data and validation improvements
+
+Repeated factory and line attributes are now checked for conflict. Two rows declaring different costs, quality/reliability, compliance, stage capacity, transit time, operator counts or line efficiency for the same entity produce an explicit validation error rather than accepting whichever row appeared first.
+
+Every full-schema collection entry must be an object. Malformed history rows therefore yield a controlled import error rather than an internal server failure. Existing finite-number, reference, date, quantity, action-cycle and cause-evidence validation remains in force.
+
+An order-table import still creates only the network needed by those rows. It does not borrow the packaged factory history. All nine workspaces use the selected file’s resulting model.
+
+### 18.15 Reload, navigation and failure behavior
+
+The UI stores the current workspace, selected incident/order and order filters in session storage, associated with the selected scenario. A reload restores this context when it belongs to the active dataset. Selecting or uploading a new scenario resets incompatible order/line/gate filters.
+
+Each workspace navigation cancels outstanding view requests using `AbortController` and a navigation generation counter. A slow response from an abandoned page cannot replace the newer workspace. API failures become visible retry states. Form failures remain visible in the active dialog rather than silently closing it.
+
+The application still has one server-global active scenario. The controls are appropriate to a single-user local workspace; they do not implement concurrent multi-user transaction isolation or merge resolution.
+
+### 18.16 Exports and report scope
+
+The printable management HTML now adds factory QCD/exposure, response actions and accountable owners, commitments, policy benchmarks, operating evidence, PDCA observations, rule reviews and calculation notes to the original order/incident/decision summary.
+
+The full JSON includes the detailed analytics model and workflow events. The CSV contains order forecasts and uses formula-injection-safe text fields. The working scenario JSON includes source-level release changes and planned line assignments; it is not a database backup and does not reproduce every recovery override or approval history. Download the evidence pack and back up SQLite when complete state retention is required.
+
+### 18.17 Engineering and release support
+
+New components:
+
+- `app/analytics.py`: reconciled portfolio, capacity, history, factory performance, cause contribution, WIP and Monte Carlo.
+- `app/workflows.py`: operating-event storage and replay.
+- `web/enterprise.js`: chart components, enhanced workspaces, structured dialogs and navigation control.
+- `tests/test_enterprise.py`: reservation invariants, simulations, imports and controlled workflows.
+- `scripts/validate_scenarios.py`: validates and reconciles all 20 packaged scenarios.
+- `.github/workflows/quality.yml`: automated Python tests, syntax checks and scenario sweep.
+- `Dockerfile`, `compose.yaml`, `.dockerignore`: non-root container configuration with persistent storage and a local-only published port.
+
+`PLANTCORE_DB` configures the database path. `/api/health` checks SQLite connectivity and returns the version, storage type and local single-user mode. Application version is 0.2.0. The project uses no chart CDN dependency; the charts are SVG/HTML computed from API responses.
+
+A Docker runtime was unavailable in the development environment, so the supplied container configuration has not been built or smoke-tested there. CI is a supplied workflow until the hosted run confirms its result.
+
+### 18.18 Added API surface
+
+| Method | Route | Purpose |
+| --- | --- | --- |
+| GET | `/api/analytics` | Reconciled portfolio, capacity, stage load, WIP, factory QCD and methodology |
+| GET | `/api/audit` | Operating events, recovery decisions and rule history |
+| POST | `/api/releases` | Record evidence-backed material and quality gate changes |
+| POST | `/api/allocations` | Approve a feasible whole-order line assignment |
+| POST | `/api/hypotheses` | Record cause classification, Whys, evidence and verification |
+| POST | `/api/actions` | Create an accountable action with validated dependency |
+| POST | `/api/negotiations` | Record supplier-sharing and buyer-concession proposal |
+| GET | `/api/simulation` | Repeatable recovery uncertainty experiment |
+| POST | `/api/pilots` | Start a verified-cause recurrence pilot |
+| GET/POST | `/api/checkpoints` | Retrieve or record measured persistence evidence |
+| GET | `/api/health` | Version and SQLite readiness check |
+
+### 18.19 Validation evidence
+
+The automated regression suite passed: **83 tests** after the new analytics and workflow implementation. The suite covers both prior functionality and added reservation, chronology, import, proposal and checkpoint behavior. The 20-scenario sweep verifies per-stage quantity conservation, line/day capacity limits, pooled factory-stage capacity limits and portfolio status reconciliation.
+
+Desktop browser tests on an isolated database confirmed:
+
+- All principal workspaces render, with no captured JavaScript errors in the checked flows.
+- A capacity cell exposes its exact available/reserved minutes, output, outsourced units and order links.
+- Clearing a synthetic material shortage makes `PO-2607` schedulable and revises its shipment forecast.
+- Reload preserves the order detail and updated release evidence.
+- Approving line L1 moves the plan to F1/L1 and recalculates the expected shipment.
+- A recurrence pilot accepts a valid measured 30-day period, shows improvement observed for day 30, and leaves days 60/90 awaiting evidence.
+- Creating a RACI action adds the action to the execution workspace and event ledger.
+
+These tests do not demonstrate the correctness of every possible input or certify industrial deployment. Real-world acceptance additionally requires representative factory data, finance reconciliation, uncertainty calibration, security review and monitored operation.
