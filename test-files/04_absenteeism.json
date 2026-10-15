@@ -1,0 +1,3950 @@
+{
+  "data": {
+    "actions": [
+      {
+        "accountable": "Factory general manager",
+        "consulted": "Quality manager",
+        "dependency": null,
+        "due_date": "2026-10-15",
+        "evidence": "",
+        "id": "ACT-001",
+        "incident_id": "INC-001",
+        "informed": "Production manager",
+        "owner": "Maintenance lead",
+        "status": "in_progress",
+        "title": "Replace worn needles and validate FL-07 output"
+      },
+      {
+        "accountable": "Factory general manager",
+        "consulted": "Production manager",
+        "dependency": "ACT-001",
+        "due_date": "2026-10-17",
+        "evidence": "",
+        "id": "ACT-002",
+        "incident_id": "INC-001",
+        "informed": "Factory production planner",
+        "owner": "Maintenance lead",
+        "status": "open",
+        "title": "Publish preventive replacement standard"
+      },
+      {
+        "accountable": "Production manager",
+        "consulted": "Logistics coordinator",
+        "dependency": "ACT-001",
+        "due_date": "2026-10-14",
+        "evidence": "",
+        "id": "ACT-003",
+        "incident_id": "INC-001",
+        "informed": "Merchandising representative",
+        "owner": "Factory production planner",
+        "status": "open",
+        "title": "Confirm recovery capacity and revised shipment"
+      },
+      {
+        "accountable": "Production manager",
+        "consulted": "Merchandising representative",
+        "dependency": null,
+        "due_date": "2026-10-15",
+        "evidence": "",
+        "id": "ACT-004",
+        "incident_id": "INC-002",
+        "informed": "Factory production planner",
+        "owner": "Material coordinator",
+        "status": "open",
+        "title": "Obtain supplier dispatch evidence"
+      }
+    ],
+    "downtime": [
+      {
+        "cause": "Power interruption",
+        "date": "2026-09-23",
+        "id": "DT-001",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 53,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-23",
+        "id": "DT-002",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 20,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-23",
+        "id": "DT-003",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 44,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-09-23",
+        "id": "DT-004",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 48,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-23",
+        "id": "DT-005",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 27,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-23",
+        "id": "DT-006",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 38,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-09-23",
+        "id": "DT-007",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-23",
+        "id": "DT-008",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 13,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-09-26",
+        "id": "DT-009",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 19,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-09-26",
+        "id": "DT-010",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 25,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-26",
+        "id": "DT-011",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 54,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-09-26",
+        "id": "DT-012",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 18,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-26",
+        "id": "DT-013",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 17,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-26",
+        "id": "DT-014",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 22,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-09-26",
+        "id": "DT-015",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-26",
+        "id": "DT-016",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 37,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-29",
+        "id": "DT-017",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 47,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-29",
+        "id": "DT-018",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 33,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-09-29",
+        "id": "DT-019",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 38,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-29",
+        "id": "DT-020",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 45,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-09-29",
+        "id": "DT-021",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 16,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-09-29",
+        "id": "DT-022",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 17,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-09-29",
+        "id": "DT-023",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-09-29",
+        "id": "DT-024",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 54,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-02",
+        "id": "DT-025",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 30,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-02",
+        "id": "DT-026",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 40,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-02",
+        "id": "DT-027",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 34,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-02",
+        "id": "DT-028",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 24,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-02",
+        "id": "DT-029",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 20,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-02",
+        "id": "DT-030",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 27,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-10-02",
+        "id": "DT-031",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-02",
+        "id": "DT-032",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 44,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-10-05",
+        "id": "DT-033",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 30,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-10-05",
+        "id": "DT-034",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 36,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-05",
+        "id": "DT-035",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 33,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-05",
+        "id": "DT-036",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 20,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-05",
+        "id": "DT-037",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 33,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-05",
+        "id": "DT-038",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 30,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-10-05",
+        "id": "DT-039",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-05",
+        "id": "DT-040",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 16,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-08",
+        "id": "DT-041",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 24,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-08",
+        "id": "DT-042",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 43,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-08",
+        "id": "DT-043",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 45,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-08",
+        "id": "DT-044",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 22,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-08",
+        "id": "DT-045",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 21,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-08",
+        "id": "DT-046",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 44,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-10-08",
+        "id": "DT-047",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Thread jam",
+        "date": "2026-10-08",
+        "id": "DT-048",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 32,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-14",
+        "id": "DT-049",
+        "line_id": "L1",
+        "machine": "Generic station",
+        "minutes": 47,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-10-14",
+        "id": "DT-050",
+        "line_id": "L2",
+        "machine": "Generic station",
+        "minutes": 12,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-10-14",
+        "id": "DT-051",
+        "line_id": "L3",
+        "machine": "Generic station",
+        "minutes": 54,
+        "shift": "A"
+      },
+      {
+        "cause": "Changeover",
+        "date": "2026-10-14",
+        "id": "DT-052",
+        "line_id": "L4",
+        "machine": "Generic station",
+        "minutes": 25,
+        "shift": "A"
+      },
+      {
+        "cause": "Power interruption",
+        "date": "2026-10-14",
+        "id": "DT-053",
+        "line_id": "L5",
+        "machine": "Generic station",
+        "minutes": 21,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-14",
+        "id": "DT-054",
+        "line_id": "L6",
+        "machine": "Generic station",
+        "minutes": 34,
+        "shift": "A"
+      },
+      {
+        "cause": "Flatlock needle failure",
+        "date": "2026-10-14",
+        "id": "DT-055",
+        "line_id": "L7",
+        "machine": "FL-07",
+        "minutes": 95,
+        "shift": "A"
+      },
+      {
+        "cause": "Sensor fault",
+        "date": "2026-10-14",
+        "id": "DT-056",
+        "line_id": "L8",
+        "machine": "Generic station",
+        "minutes": 54,
+        "shift": "A"
+      }
+    ],
+    "factories": [
+      {
+        "capabilities": [
+          "knit",
+          "woven",
+          "denim"
+        ],
+        "compliance": true,
+        "cost": 4.65,
+        "daily_cut": 2600,
+        "daily_finish": 2250,
+        "daily_pack": 2300,
+        "daily_qc": 2100,
+        "id": "F1",
+        "logistics_days": 2,
+        "name": "Dhaka Precision",
+        "quality": 0.965,
+        "region": "Dhaka",
+        "reliability": 0.91
+      },
+      {
+        "capabilities": [
+          "knit",
+          "woven"
+        ],
+        "compliance": true,
+        "cost": 4.25,
+        "daily_cut": 2400,
+        "daily_finish": 2000,
+        "daily_pack": 2100,
+        "daily_qc": 1950,
+        "id": "F2",
+        "logistics_days": 3,
+        "name": "Chattogram Apparel",
+        "quality": 0.948,
+        "region": "Chattogram",
+        "reliability": 0.84
+      },
+      {
+        "capabilities": [
+          "knit",
+          "denim"
+        ],
+        "compliance": true,
+        "cost": 4.05,
+        "daily_cut": 1850,
+        "daily_finish": 1750,
+        "daily_pack": 1800,
+        "daily_qc": 1700,
+        "id": "F3",
+        "logistics_days": 2,
+        "name": "Gazipur Works",
+        "quality": 0.928,
+        "region": "Gazipur",
+        "reliability": 0.78
+      }
+    ],
+    "incidents": [
+      {
+        "detected_at": "2026-10-14",
+        "evidence": "Seven FL-07 needle failures in 19 production days; service log has no scheduled needle replacement. A supervised inspection found wear beyond the supplier's run-hour threshold.",
+        "factory_id": "F3",
+        "id": "INC-001",
+        "immediate_cause": "Needle breakage stops sleeve and hood seam operations",
+        "line_id": "L7",
+        "lost_minutes": 665,
+        "order_id": "PO-2618",
+        "owner": "Production manager",
+        "severity": "critical",
+        "status": "investigating",
+        "title": "Flatlock bottleneck repeatedly stops hoodie sewing",
+        "type": "recurring_downtime",
+        "verification": "Maintenance lead inspected service logs and reproduced wear at the specified run-hour threshold on 2026-10-12. Pilot outcome remains to be measured.",
+        "verified_root_cause": "Preventive needle replacement interval was omitted from the maintenance standard"
+      },
+      {
+        "detected_at": "2026-10-14",
+        "evidence": "Purchase order dispatch date missed; freight receipt unconfirmed.",
+        "factory_id": "F2",
+        "id": "INC-002",
+        "immediate_cause": "Supplier missed confirmed fabric dispatch",
+        "line_id": "L4",
+        "lost_minutes": 0,
+        "order_id": "PO-2607",
+        "owner": "Material coordinator",
+        "severity": "high",
+        "status": "open",
+        "title": "Fabric release moved five days",
+        "type": "material_delay",
+        "verification": null,
+        "verified_root_cause": null
+      },
+      {
+        "detected_at": "2026-10-14",
+        "evidence": "Batch sampling report pending.",
+        "factory_id": "F3",
+        "id": "INC-003",
+        "immediate_cause": "Quality inspection hold",
+        "line_id": "L7",
+        "lost_minutes": 720,
+        "order_id": "PO-2610",
+        "owner": "Quality manager",
+        "severity": "medium",
+        "status": "open",
+        "title": "Inspection release pending",
+        "type": "quality_hold",
+        "verification": null,
+        "verified_root_cause": null
+      }
+    ],
+    "labor": [
+      {
+        "date": "2026-09-23",
+        "line_id": "L1",
+        "present": 35,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L4",
+        "present": 35,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-23",
+        "line_id": "L8",
+        "present": 28,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L4",
+        "present": 36,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-24",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L1",
+        "present": 35,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L2",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L4",
+        "present": 35,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L5",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-25",
+        "line_id": "L8",
+        "present": 28,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L2",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L4",
+        "present": 36,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L5",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L6",
+        "present": 33,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-26",
+        "line_id": "L8",
+        "present": 29,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L2",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L3",
+        "present": 31,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L4",
+        "present": 36,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L5",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L6",
+        "present": 33,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-28",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L3",
+        "present": 31,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L6",
+        "present": 32,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-29",
+        "line_id": "L8",
+        "present": 31,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L1",
+        "present": 38,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L2",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L4",
+        "present": 36,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L5",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-09-30",
+        "line_id": "L8",
+        "present": 31,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L2",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L4",
+        "present": 34,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L5",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L6",
+        "present": 33,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-01",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L3",
+        "present": 31,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L4",
+        "present": 34,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-02",
+        "line_id": "L8",
+        "present": 29,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L4",
+        "present": 35,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L5",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L6",
+        "present": 32,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-03",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L1",
+        "present": 35,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L2",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L3",
+        "present": 31,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L5",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-05",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L2",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L5",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L6",
+        "present": 32,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-06",
+        "line_id": "L8",
+        "present": 28,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L1",
+        "present": 38,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L3",
+        "present": 31,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L6",
+        "present": 35,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-07",
+        "line_id": "L8",
+        "present": 31,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L2",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L5",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-08",
+        "line_id": "L8",
+        "present": 29,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L2",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L6",
+        "present": 32,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-09",
+        "line_id": "L8",
+        "present": 29,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L1",
+        "present": 36,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L2",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L3",
+        "present": 32,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L4",
+        "present": 34,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L5",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L6",
+        "present": 33,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-10",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L1",
+        "present": 35,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L2",
+        "present": 31,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L4",
+        "present": 33,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L5",
+        "present": 34,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L6",
+        "present": 33,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-12",
+        "line_id": "L8",
+        "present": 29,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L2",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L3",
+        "present": 29,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L4",
+        "present": 35,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L5",
+        "present": 33,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-13",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L1",
+        "present": 37,
+        "scheduled": 38
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L2",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L3",
+        "present": 30,
+        "scheduled": 32
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L4",
+        "present": 35,
+        "scheduled": 36
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L5",
+        "present": 32,
+        "scheduled": 34
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L6",
+        "present": 34,
+        "scheduled": 35
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L7",
+        "present": 22,
+        "scheduled": 33
+      },
+      {
+        "date": "2026-10-14",
+        "line_id": "L8",
+        "present": 30,
+        "scheduled": 31
+      }
+    ],
+    "lines": [
+      {
+        "efficiency": 0.78,
+        "factory_id": "F1",
+        "id": "L1",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock"
+        ],
+        "maintenance": [],
+        "name": "DP-01",
+        "operators": 38,
+        "skills": [
+          "knit",
+          "woven"
+        ]
+      },
+      {
+        "efficiency": 0.76,
+        "factory_id": "F1",
+        "id": "L2",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "bartack"
+        ],
+        "maintenance": [
+          "2026-10-22"
+        ],
+        "name": "DP-02",
+        "operators": 34,
+        "skills": [
+          "woven",
+          "denim"
+        ]
+      },
+      {
+        "efficiency": 0.74,
+        "factory_id": "F1",
+        "id": "L3",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock",
+          "bartack"
+        ],
+        "maintenance": [],
+        "name": "DP-03",
+        "operators": 32,
+        "skills": [
+          "knit",
+          "denim"
+        ]
+      },
+      {
+        "efficiency": 0.76,
+        "factory_id": "F2",
+        "id": "L4",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock"
+        ],
+        "maintenance": [],
+        "name": "CA-01",
+        "operators": 36,
+        "skills": [
+          "knit",
+          "woven"
+        ]
+      },
+      {
+        "efficiency": 0.73,
+        "factory_id": "F2",
+        "id": "L5",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "bartack"
+        ],
+        "maintenance": [
+          "2026-10-26"
+        ],
+        "name": "CA-02",
+        "operators": 34,
+        "skills": [
+          "woven"
+        ]
+      },
+      {
+        "efficiency": 0.72,
+        "factory_id": "F2",
+        "id": "L6",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock"
+        ],
+        "maintenance": [],
+        "name": "CA-03",
+        "operators": 35,
+        "skills": [
+          "knit"
+        ]
+      },
+      {
+        "efficiency": 0.71,
+        "factory_id": "F3",
+        "id": "L7",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock",
+          "bartack"
+        ],
+        "maintenance": [],
+        "name": "GW-01",
+        "operators": 23,
+        "skills": [
+          "knit",
+          "denim"
+        ]
+      },
+      {
+        "efficiency": 0.7,
+        "factory_id": "F3",
+        "id": "L8",
+        "machines": [
+          "lockstitch",
+          "overlock",
+          "flatlock"
+        ],
+        "maintenance": [],
+        "name": "GW-02",
+        "operators": 31,
+        "skills": [
+          "knit"
+        ]
+      }
+    ],
+    "materials": [
+      {
+        "fabric_ready": "2026-10-14",
+        "order_id": "PO-2601",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-17",
+        "order_id": "PO-2602",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-17"
+      },
+      {
+        "fabric_ready": "2026-10-20",
+        "order_id": "PO-2603",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-20"
+      },
+      {
+        "fabric_ready": "2026-10-15",
+        "order_id": "PO-2604",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-18",
+        "order_id": "PO-2605",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-18"
+      },
+      {
+        "fabric_ready": "2026-10-21",
+        "order_id": "PO-2606",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-21"
+      },
+      {
+        "fabric_ready": "2026-10-21",
+        "order_id": "PO-2607",
+        "shortage_units": 100,
+        "trims_ready": "2026-10-22"
+      },
+      {
+        "fabric_ready": "2026-10-19",
+        "order_id": "PO-2608",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-19"
+      },
+      {
+        "fabric_ready": "2026-10-14",
+        "order_id": "PO-2609",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-14"
+      },
+      {
+        "fabric_ready": "2026-10-17",
+        "order_id": "PO-2610",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-17"
+      },
+      {
+        "fabric_ready": "2026-10-20",
+        "order_id": "PO-2611",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-20"
+      },
+      {
+        "fabric_ready": "2026-10-15",
+        "order_id": "PO-2612",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-18",
+        "order_id": "PO-2613",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-19"
+      },
+      {
+        "fabric_ready": "2026-10-21",
+        "order_id": "PO-2614",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-21"
+      },
+      {
+        "fabric_ready": "2026-10-16",
+        "order_id": "PO-2615",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-16"
+      },
+      {
+        "fabric_ready": "2026-10-19",
+        "order_id": "PO-2616",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-19"
+      },
+      {
+        "fabric_ready": "2026-10-19",
+        "order_id": "PO-2617",
+        "shortage_units": 100,
+        "trims_ready": "2026-10-19"
+      },
+      {
+        "fabric_ready": "2026-10-14",
+        "order_id": "PO-2618",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-14"
+      },
+      {
+        "fabric_ready": "2026-10-20",
+        "order_id": "PO-2619",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-21"
+      },
+      {
+        "fabric_ready": "2026-10-15",
+        "order_id": "PO-2620",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-18",
+        "order_id": "PO-2621",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-18"
+      },
+      {
+        "fabric_ready": "2026-10-21",
+        "order_id": "PO-2622",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-21"
+      },
+      {
+        "fabric_ready": "2026-10-16",
+        "order_id": "PO-2623",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-16"
+      },
+      {
+        "fabric_ready": "2026-10-24",
+        "order_id": "PO-2624",
+        "shortage_units": 100,
+        "trims_ready": "2026-10-24"
+      },
+      {
+        "fabric_ready": "2026-10-14",
+        "order_id": "PO-2625",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-17",
+        "order_id": "PO-2626",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-17"
+      },
+      {
+        "fabric_ready": "2026-10-20",
+        "order_id": "PO-2627",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-20"
+      },
+      {
+        "fabric_ready": "2026-10-15",
+        "order_id": "PO-2628",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-15"
+      },
+      {
+        "fabric_ready": "2026-10-18",
+        "order_id": "PO-2629",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-18"
+      },
+      {
+        "fabric_ready": "2026-10-21",
+        "order_id": "PO-2630",
+        "shortage_units": 0,
+        "trims_ready": "2026-10-21"
+      }
+    ],
+    "orders": [
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-10-24",
+        "factory_id": "F1",
+        "id": "PO-2601",
+        "line_id": "L1",
+        "margin_per_unit": 2.4,
+        "material_date": "2026-10-14",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 525,
+        "status": "active",
+        "style_id": "S01",
+        "target_cost": 3417.75
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-10-25",
+        "factory_id": "F3",
+        "id": "PO-2602",
+        "line_id": "L8",
+        "margin_per_unit": 2.85,
+        "material_date": "2026-10-17",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 727,
+        "status": "active",
+        "style_id": "S02",
+        "target_cost": 4830.91
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-10-26",
+        "factory_id": "F2",
+        "id": "PO-2603",
+        "line_id": "L4",
+        "margin_per_unit": 3.3,
+        "material_date": "2026-10-20",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 915,
+        "status": "active",
+        "style_id": "S03",
+        "target_cost": 6976.88
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-10-27",
+        "factory_id": "F1",
+        "id": "PO-2604",
+        "line_id": "L2",
+        "margin_per_unit": 3.75,
+        "material_date": "2026-10-15",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 1077,
+        "status": "active",
+        "style_id": "S04",
+        "target_cost": 8917.56
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-10-28",
+        "factory_id": "F1",
+        "id": "PO-2605",
+        "line_id": "L2",
+        "margin_per_unit": 4.2,
+        "material_date": "2026-10-18",
+        "min_lot": 200,
+        "priority": 3,
+        "quality_release": true,
+        "quantity": 1162,
+        "status": "active",
+        "style_id": "S05",
+        "target_cost": 10475.43
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-10-29",
+        "factory_id": "F3",
+        "id": "PO-2606",
+        "line_id": "L8",
+        "margin_per_unit": 4.65,
+        "material_date": "2026-10-21",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 548,
+        "status": "active",
+        "style_id": "S06",
+        "target_cost": 3452.4
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-10-30",
+        "factory_id": "F2",
+        "id": "PO-2607",
+        "line_id": "L4",
+        "margin_per_unit": 2.4,
+        "material_date": "2026-10-21",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 745,
+        "status": "active",
+        "style_id": "S07",
+        "target_cost": 5445.95
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-10-31",
+        "factory_id": "F1",
+        "id": "PO-2608",
+        "line_id": "L3",
+        "margin_per_unit": 2.85,
+        "material_date": "2026-10-19",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 881,
+        "status": "active",
+        "style_id": "S08",
+        "target_cost": 7532.55
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-01",
+        "factory_id": "F1",
+        "id": "PO-2609",
+        "line_id": "L2",
+        "margin_per_unit": 3.3,
+        "material_date": "2026-10-14",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 1061,
+        "status": "active",
+        "style_id": "S09",
+        "target_cost": 8387.2
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-02",
+        "factory_id": "F3",
+        "id": "PO-2610",
+        "line_id": "L7",
+        "margin_per_unit": 3.75,
+        "material_date": "2026-10-17",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": false,
+        "quantity": 1197,
+        "status": "active",
+        "style_id": "S10",
+        "target_cost": 10952.55
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-11-06",
+        "factory_id": "F2",
+        "id": "PO-2611",
+        "line_id": "L4",
+        "margin_per_unit": 4.2,
+        "material_date": "2026-10-20",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 575,
+        "status": "active",
+        "style_id": "S01",
+        "target_cost": 3513.25
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-07",
+        "factory_id": "F1",
+        "id": "PO-2612",
+        "line_id": "L3",
+        "margin_per_unit": 4.65,
+        "material_date": "2026-10-15",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 761,
+        "status": "active",
+        "style_id": "S02",
+        "target_cost": 5513.45
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-08",
+        "factory_id": "F1",
+        "id": "PO-2613",
+        "line_id": "L1",
+        "margin_per_unit": 2.4,
+        "material_date": "2026-10-18",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 946,
+        "status": "active",
+        "style_id": "S03",
+        "target_cost": 7591.65
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-11-09",
+        "factory_id": "F1",
+        "id": "PO-2614",
+        "line_id": "L2",
+        "margin_per_unit": 2.85,
+        "material_date": "2026-10-21",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 1113,
+        "status": "active",
+        "style_id": "S04",
+        "target_cost": 9215.64
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-10",
+        "factory_id": "F1",
+        "id": "PO-2615",
+        "line_id": "L2",
+        "margin_per_unit": 3.3,
+        "material_date": "2026-10-16",
+        "min_lot": 200,
+        "priority": 3,
+        "quality_release": true,
+        "quantity": 1208,
+        "status": "active",
+        "style_id": "S05",
+        "target_cost": 10890.12
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-11",
+        "factory_id": "F1",
+        "id": "PO-2616",
+        "line_id": "L3",
+        "margin_per_unit": 3.75,
+        "material_date": "2026-10-19",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 522,
+        "status": "active",
+        "style_id": "S06",
+        "target_cost": 3601.8
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-10-27",
+        "factory_id": "F1",
+        "id": "PO-2617",
+        "line_id": "L1",
+        "margin_per_unit": 4.2,
+        "material_date": "2026-10-19",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 790,
+        "status": "active",
+        "style_id": "S07",
+        "target_cost": 6090.9
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-10-23",
+        "factory_id": "F3",
+        "id": "PO-2618",
+        "line_id": "L7",
+        "margin_per_unit": 4.9,
+        "material_date": "2026-10-14",
+        "min_lot": 200,
+        "priority": 3,
+        "quality_release": true,
+        "quantity": 1450,
+        "status": "active",
+        "style_id": "S08",
+        "target_cost": 14200.0
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-10-29",
+        "factory_id": "F2",
+        "id": "PO-2619",
+        "line_id": "L5",
+        "margin_per_unit": 2.4,
+        "material_date": "2026-10-20",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 1021,
+        "status": "active",
+        "style_id": "S09",
+        "target_cost": 7662.6
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-10-30",
+        "factory_id": "F1",
+        "id": "PO-2620",
+        "line_id": "L3",
+        "margin_per_unit": 2.85,
+        "material_date": "2026-10-15",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": false,
+        "quantity": 1226,
+        "status": "active",
+        "style_id": "S10",
+        "target_cost": 11953.5
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-03",
+        "factory_id": "F1",
+        "id": "PO-2621",
+        "line_id": "L1",
+        "margin_per_unit": 3.3,
+        "material_date": "2026-10-18",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 636,
+        "status": "active",
+        "style_id": "S01",
+        "target_cost": 4140.36
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-04",
+        "factory_id": "F3",
+        "id": "PO-2622",
+        "line_id": "L8",
+        "margin_per_unit": 3.75,
+        "material_date": "2026-10-21",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 757,
+        "status": "active",
+        "style_id": "S02",
+        "target_cost": 5030.26
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-11-05",
+        "factory_id": "F2",
+        "id": "PO-2623",
+        "line_id": "L4",
+        "margin_per_unit": 4.2,
+        "material_date": "2026-10-16",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 887,
+        "status": "active",
+        "style_id": "S03",
+        "target_cost": 6763.38
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-06",
+        "factory_id": "F1",
+        "id": "PO-2624",
+        "line_id": "L2",
+        "margin_per_unit": 4.65,
+        "material_date": "2026-10-24",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 1048,
+        "status": "active",
+        "style_id": "S04",
+        "target_cost": 8677.44
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-07",
+        "factory_id": "F1",
+        "id": "PO-2625",
+        "line_id": "L2",
+        "margin_per_unit": 2.4,
+        "material_date": "2026-10-14",
+        "min_lot": 200,
+        "priority": 3,
+        "quality_release": true,
+        "quantity": 1210,
+        "status": "active",
+        "style_id": "S05",
+        "target_cost": 10908.15
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-11-08",
+        "factory_id": "F3",
+        "id": "PO-2626",
+        "line_id": "L8",
+        "margin_per_unit": 2.85,
+        "material_date": "2026-10-17",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 533,
+        "status": "active",
+        "style_id": "S06",
+        "target_cost": 3357.9
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-09",
+        "factory_id": "F2",
+        "id": "PO-2627",
+        "line_id": "L4",
+        "margin_per_unit": 3.3,
+        "material_date": "2026-10-20",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 763,
+        "status": "active",
+        "style_id": "S07",
+        "target_cost": 5577.53
+      },
+      {
+        "customer": "Northstar Retail",
+        "due_date": "2026-11-10",
+        "factory_id": "F1",
+        "id": "PO-2628",
+        "line_id": "L3",
+        "margin_per_unit": 3.75,
+        "material_date": "2026-10-15",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 952,
+        "status": "active",
+        "style_id": "S08",
+        "target_cost": 8139.6
+      },
+      {
+        "customer": "Cedar & Co",
+        "due_date": "2026-11-11",
+        "factory_id": "F1",
+        "id": "PO-2629",
+        "line_id": "L2",
+        "margin_per_unit": 4.2,
+        "material_date": "2026-10-18",
+        "min_lot": 200,
+        "priority": 2,
+        "quality_release": true,
+        "quantity": 1092,
+        "status": "active",
+        "style_id": "S09",
+        "target_cost": 8632.26
+      },
+      {
+        "customer": "Harbor Outfitters",
+        "due_date": "2026-11-12",
+        "factory_id": "F3",
+        "id": "PO-2630",
+        "line_id": "L7",
+        "margin_per_unit": 4.65,
+        "material_date": "2026-10-21",
+        "min_lot": 200,
+        "priority": 1,
+        "quality_release": true,
+        "quantity": 1234,
+        "status": "active",
+        "style_id": "S10",
+        "target_cost": 11291.1
+      }
+    ],
+    "production": [
+      {
+        "actual": 696,
+        "date": "2026-09-23",
+        "first_pass": 679,
+        "line_id": "L1",
+        "rework": 17,
+        "target": 711
+      },
+      {
+        "actual": 616,
+        "date": "2026-09-23",
+        "first_pass": 601,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 564,
+        "date": "2026-09-23",
+        "first_pass": 550,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 644,
+        "date": "2026-09-23",
+        "first_pass": 628,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 580,
+        "date": "2026-09-23",
+        "first_pass": 566,
+        "line_id": "L5",
+        "rework": 14,
+        "target": 596
+      },
+      {
+        "actual": 593,
+        "date": "2026-09-23",
+        "first_pass": 578,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 542,
+        "date": "2026-09-23",
+        "first_pass": 515,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 507,
+        "date": "2026-09-23",
+        "first_pass": 494,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 710,
+        "date": "2026-09-24",
+        "first_pass": 692,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 610,
+        "date": "2026-09-24",
+        "first_pass": 595,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 552,
+        "date": "2026-09-24",
+        "first_pass": 538,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 643,
+        "date": "2026-09-24",
+        "first_pass": 627,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 596,
+        "date": "2026-09-24",
+        "first_pass": 581,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 605,
+        "date": "2026-09-24",
+        "first_pass": 590,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 531,
+        "date": "2026-09-24",
+        "first_pass": 504,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 510,
+        "date": "2026-09-24",
+        "first_pass": 497,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 703,
+        "date": "2026-09-25",
+        "first_pass": 685,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 605,
+        "date": "2026-09-25",
+        "first_pass": 590,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 563,
+        "date": "2026-09-25",
+        "first_pass": 549,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 656,
+        "date": "2026-09-25",
+        "first_pass": 640,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 583,
+        "date": "2026-09-25",
+        "first_pass": 568,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 600,
+        "date": "2026-09-25",
+        "first_pass": 585,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 534,
+        "date": "2026-09-25",
+        "first_pass": 507,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 508,
+        "date": "2026-09-25",
+        "first_pass": 495,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 707,
+        "date": "2026-09-26",
+        "first_pass": 689,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 612,
+        "date": "2026-09-26",
+        "first_pass": 597,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 564,
+        "date": "2026-09-26",
+        "first_pass": 550,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 652,
+        "date": "2026-09-26",
+        "first_pass": 636,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 582,
+        "date": "2026-09-26",
+        "first_pass": 567,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 600,
+        "date": "2026-09-26",
+        "first_pass": 585,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 529,
+        "date": "2026-09-26",
+        "first_pass": 503,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 508,
+        "date": "2026-09-26",
+        "first_pass": 495,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 708,
+        "date": "2026-09-28",
+        "first_pass": 690,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 613,
+        "date": "2026-09-28",
+        "first_pass": 598,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 568,
+        "date": "2026-09-28",
+        "first_pass": 554,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 643,
+        "date": "2026-09-28",
+        "first_pass": 627,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 596,
+        "date": "2026-09-28",
+        "first_pass": 581,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 597,
+        "date": "2026-09-28",
+        "first_pass": 582,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 536,
+        "date": "2026-09-28",
+        "first_pass": 509,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 511,
+        "date": "2026-09-28",
+        "first_pass": 498,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 699,
+        "date": "2026-09-29",
+        "first_pass": 682,
+        "line_id": "L1",
+        "rework": 17,
+        "target": 711
+      },
+      {
+        "actual": 615,
+        "date": "2026-09-29",
+        "first_pass": 600,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 556,
+        "date": "2026-09-29",
+        "first_pass": 542,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 657,
+        "date": "2026-09-29",
+        "first_pass": 641,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 593,
+        "date": "2026-09-29",
+        "first_pass": 578,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 593,
+        "date": "2026-09-29",
+        "first_pass": 578,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 526,
+        "date": "2026-09-29",
+        "first_pass": 500,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 521,
+        "date": "2026-09-29",
+        "first_pass": 508,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 706,
+        "date": "2026-09-30",
+        "first_pass": 688,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 606,
+        "date": "2026-09-30",
+        "first_pass": 591,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 562,
+        "date": "2026-09-30",
+        "first_pass": 548,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 652,
+        "date": "2026-09-30",
+        "first_pass": 636,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 585,
+        "date": "2026-09-30",
+        "first_pass": 570,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 598,
+        "date": "2026-09-30",
+        "first_pass": 583,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 542,
+        "date": "2026-09-30",
+        "first_pass": 515,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 520,
+        "date": "2026-09-30",
+        "first_pass": 507,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 704,
+        "date": "2026-10-01",
+        "first_pass": 686,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 611,
+        "date": "2026-10-01",
+        "first_pass": 596,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 552,
+        "date": "2026-10-01",
+        "first_pass": 538,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 652,
+        "date": "2026-10-01",
+        "first_pass": 636,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 595,
+        "date": "2026-10-01",
+        "first_pass": 580,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 599,
+        "date": "2026-10-01",
+        "first_pass": 584,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 542,
+        "date": "2026-10-01",
+        "first_pass": 515,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 507,
+        "date": "2026-10-01",
+        "first_pass": 494,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 706,
+        "date": "2026-10-02",
+        "first_pass": 688,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 606,
+        "date": "2026-10-02",
+        "first_pass": 591,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 563,
+        "date": "2026-10-02",
+        "first_pass": 549,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 651,
+        "date": "2026-10-02",
+        "first_pass": 635,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 592,
+        "date": "2026-10-02",
+        "first_pass": 577,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 597,
+        "date": "2026-10-02",
+        "first_pass": 582,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 531,
+        "date": "2026-10-02",
+        "first_pass": 504,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 512,
+        "date": "2026-10-02",
+        "first_pass": 499,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 701,
+        "date": "2026-10-03",
+        "first_pass": 683,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 613,
+        "date": "2026-10-03",
+        "first_pass": 598,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 563,
+        "date": "2026-10-03",
+        "first_pass": 549,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 651,
+        "date": "2026-10-03",
+        "first_pass": 635,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 587,
+        "date": "2026-10-03",
+        "first_pass": 572,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 599,
+        "date": "2026-10-03",
+        "first_pass": 584,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 526,
+        "date": "2026-10-03",
+        "first_pass": 500,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 506,
+        "date": "2026-10-03",
+        "first_pass": 493,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 699,
+        "date": "2026-10-05",
+        "first_pass": 682,
+        "line_id": "L1",
+        "rework": 17,
+        "target": 711
+      },
+      {
+        "actual": 620,
+        "date": "2026-10-05",
+        "first_pass": 604,
+        "line_id": "L2",
+        "rework": 16,
+        "target": 620
+      },
+      {
+        "actual": 565,
+        "date": "2026-10-05",
+        "first_pass": 551,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 645,
+        "date": "2026-10-05",
+        "first_pass": 629,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 582,
+        "date": "2026-10-05",
+        "first_pass": 567,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 595,
+        "date": "2026-10-05",
+        "first_pass": 580,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 540,
+        "date": "2026-10-05",
+        "first_pass": 513,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 511,
+        "date": "2026-10-05",
+        "first_pass": 498,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 708,
+        "date": "2026-10-06",
+        "first_pass": 690,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 605,
+        "date": "2026-10-06",
+        "first_pass": 590,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 555,
+        "date": "2026-10-06",
+        "first_pass": 541,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 653,
+        "date": "2026-10-06",
+        "first_pass": 637,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 589,
+        "date": "2026-10-06",
+        "first_pass": 574,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 589,
+        "date": "2026-10-06",
+        "first_pass": 574,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 535,
+        "date": "2026-10-06",
+        "first_pass": 508,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 508,
+        "date": "2026-10-06",
+        "first_pass": 495,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 708,
+        "date": "2026-10-07",
+        "first_pass": 690,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 612,
+        "date": "2026-10-07",
+        "first_pass": 597,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 552,
+        "date": "2026-10-07",
+        "first_pass": 538,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 649,
+        "date": "2026-10-07",
+        "first_pass": 633,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 583,
+        "date": "2026-10-07",
+        "first_pass": 568,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 595,
+        "date": "2026-10-07",
+        "first_pass": 580,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 526,
+        "date": "2026-10-07",
+        "first_pass": 500,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 511,
+        "date": "2026-10-07",
+        "first_pass": 498,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 708,
+        "date": "2026-10-08",
+        "first_pass": 690,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 605,
+        "date": "2026-10-08",
+        "first_pass": 590,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 552,
+        "date": "2026-10-08",
+        "first_pass": 538,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 645,
+        "date": "2026-10-08",
+        "first_pass": 629,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 584,
+        "date": "2026-10-08",
+        "first_pass": 569,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 590,
+        "date": "2026-10-08",
+        "first_pass": 575,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 538,
+        "date": "2026-10-08",
+        "first_pass": 511,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 515,
+        "date": "2026-10-08",
+        "first_pass": 502,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 697,
+        "date": "2026-10-09",
+        "first_pass": 680,
+        "line_id": "L1",
+        "rework": 17,
+        "target": 711
+      },
+      {
+        "actual": 618,
+        "date": "2026-10-09",
+        "first_pass": 603,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 559,
+        "date": "2026-10-09",
+        "first_pass": 545,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 645,
+        "date": "2026-10-09",
+        "first_pass": 629,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 587,
+        "date": "2026-10-09",
+        "first_pass": 572,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 594,
+        "date": "2026-10-09",
+        "first_pass": 579,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 530,
+        "date": "2026-10-09",
+        "first_pass": 504,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 509,
+        "date": "2026-10-09",
+        "first_pass": 496,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 703,
+        "date": "2026-10-10",
+        "first_pass": 685,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 608,
+        "date": "2026-10-10",
+        "first_pass": 593,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 564,
+        "date": "2026-10-10",
+        "first_pass": 550,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 657,
+        "date": "2026-10-10",
+        "first_pass": 641,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 593,
+        "date": "2026-10-10",
+        "first_pass": 578,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 595,
+        "date": "2026-10-10",
+        "first_pass": 580,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 532,
+        "date": "2026-10-10",
+        "first_pass": 505,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 505,
+        "date": "2026-10-10",
+        "first_pass": 492,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 702,
+        "date": "2026-10-12",
+        "first_pass": 684,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 617,
+        "date": "2026-10-12",
+        "first_pass": 602,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 565,
+        "date": "2026-10-12",
+        "first_pass": 551,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 653,
+        "date": "2026-10-12",
+        "first_pass": 637,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 593,
+        "date": "2026-10-12",
+        "first_pass": 578,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 600,
+        "date": "2026-10-12",
+        "first_pass": 585,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 538,
+        "date": "2026-10-12",
+        "first_pass": 511,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 505,
+        "date": "2026-10-12",
+        "first_pass": 492,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 707,
+        "date": "2026-10-13",
+        "first_pass": 689,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 617,
+        "date": "2026-10-13",
+        "first_pass": 602,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 564,
+        "date": "2026-10-13",
+        "first_pass": 550,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 650,
+        "date": "2026-10-13",
+        "first_pass": 634,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 589,
+        "date": "2026-10-13",
+        "first_pass": 574,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 593,
+        "date": "2026-10-13",
+        "first_pass": 578,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 526,
+        "date": "2026-10-13",
+        "first_pass": 500,
+        "line_id": "L7",
+        "rework": 26,
+        "target": 562
+      },
+      {
+        "actual": 512,
+        "date": "2026-10-13",
+        "first_pass": 499,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      },
+      {
+        "actual": 700,
+        "date": "2026-10-14",
+        "first_pass": 682,
+        "line_id": "L1",
+        "rework": 18,
+        "target": 711
+      },
+      {
+        "actual": 610,
+        "date": "2026-10-14",
+        "first_pass": 595,
+        "line_id": "L2",
+        "rework": 15,
+        "target": 620
+      },
+      {
+        "actual": 556,
+        "date": "2026-10-14",
+        "first_pass": 542,
+        "line_id": "L3",
+        "rework": 14,
+        "target": 568
+      },
+      {
+        "actual": 652,
+        "date": "2026-10-14",
+        "first_pass": 636,
+        "line_id": "L4",
+        "rework": 16,
+        "target": 657
+      },
+      {
+        "actual": 588,
+        "date": "2026-10-14",
+        "first_pass": 573,
+        "line_id": "L5",
+        "rework": 15,
+        "target": 596
+      },
+      {
+        "actual": 604,
+        "date": "2026-10-14",
+        "first_pass": 589,
+        "line_id": "L6",
+        "rework": 15,
+        "target": 605
+      },
+      {
+        "actual": 533,
+        "date": "2026-10-14",
+        "first_pass": 506,
+        "line_id": "L7",
+        "rework": 27,
+        "target": 562
+      },
+      {
+        "actual": 518,
+        "date": "2026-10-14",
+        "first_pass": 505,
+        "line_id": "L8",
+        "rework": 13,
+        "target": 521
+      }
+    ],
+    "quality_holds": [
+      {
+        "cause": "Inspection release pending",
+        "date": "2026-10-14",
+        "hours": 12,
+        "id": "QH-9",
+        "order_id": "PO-2610",
+        "status": "open"
+      },
+      {
+        "cause": "Inspection release pending",
+        "date": "2026-10-14",
+        "hours": 12,
+        "id": "QH-19",
+        "order_id": "PO-2620",
+        "status": "open"
+      },
+      {
+        "cause": "Seam strength retest",
+        "date": "2026-10-09",
+        "hours": 5,
+        "id": "QH-17",
+        "order_id": "PO-2618",
+        "status": "closed"
+      }
+    ],
+    "styles": [
+      {
+        "bottleneck": "Sleeve attach",
+        "category": "knit",
+        "id": "S01",
+        "machine": "flatlock",
+        "name": "Essential Tee",
+        "operations": [
+          [
+            "Cutting",
+            2.1
+          ],
+          [
+            "Shoulder join",
+            2.2
+          ],
+          [
+            "Sleeve attach",
+            4.1
+          ],
+          [
+            "Side seam",
+            2.7
+          ],
+          [
+            "Finishing",
+            1.3
+          ]
+        ],
+        "smv": 12.4
+      },
+      {
+        "bottleneck": "Collar attach",
+        "category": "knit",
+        "id": "S02",
+        "machine": "flatlock",
+        "name": "Polo Shirt",
+        "operations": [
+          [
+            "Cutting",
+            2.5
+          ],
+          [
+            "Placket",
+            3.6
+          ],
+          [
+            "Collar attach",
+            5.1
+          ],
+          [
+            "Side seam",
+            4.1
+          ],
+          [
+            "Finishing",
+            2.0
+          ]
+        ],
+        "smv": 17.3
+      },
+      {
+        "bottleneck": "Collar construction",
+        "category": "woven",
+        "id": "S03",
+        "machine": "lockstitch",
+        "name": "Oxford Shirt",
+        "operations": [
+          [
+            "Cutting",
+            3.0
+          ],
+          [
+            "Front assembly",
+            4.5
+          ],
+          [
+            "Collar construction",
+            6.4
+          ],
+          [
+            "Sleeve set",
+            5.2
+          ],
+          [
+            "Finishing",
+            3.4
+          ]
+        ],
+        "smv": 22.5
+      },
+      {
+        "bottleneck": "Waistband",
+        "category": "woven",
+        "id": "S04",
+        "machine": "bartack",
+        "name": "Chino Trouser",
+        "operations": [
+          [
+            "Cutting",
+            3.2
+          ],
+          [
+            "Pocket",
+            5.1
+          ],
+          [
+            "Inseam",
+            4.6
+          ],
+          [
+            "Waistband",
+            7.0
+          ],
+          [
+            "Finishing",
+            4.3
+          ]
+        ],
+        "smv": 24.2
+      },
+      {
+        "bottleneck": "Waistband",
+        "category": "denim",
+        "id": "S05",
+        "machine": "bartack",
+        "name": "Denim Jean",
+        "operations": [
+          [
+            "Cutting",
+            3.8
+          ],
+          [
+            "Pocket",
+            6.1
+          ],
+          [
+            "Inseam",
+            5.4
+          ],
+          [
+            "Waistband",
+            8.2
+          ],
+          [
+            "Finishing",
+            5.6
+          ]
+        ],
+        "smv": 29.1
+      },
+      {
+        "bottleneck": "Flatlock seam",
+        "category": "knit",
+        "id": "S06",
+        "machine": "flatlock",
+        "name": "Performance Tee",
+        "operations": [
+          [
+            "Cutting",
+            2.3
+          ],
+          [
+            "Shoulder join",
+            2.5
+          ],
+          [
+            "Flatlock seam",
+            5.2
+          ],
+          [
+            "Hem",
+            3.2
+          ],
+          [
+            "Finishing",
+            1.8
+          ]
+        ],
+        "smv": 15.0
+      },
+      {
+        "bottleneck": "Sleeve set",
+        "category": "woven",
+        "id": "S07",
+        "machine": "lockstitch",
+        "name": "Woven Blouse",
+        "operations": [
+          [
+            "Cutting",
+            2.8
+          ],
+          [
+            "Front assembly",
+            4.4
+          ],
+          [
+            "Sleeve set",
+            6.1
+          ],
+          [
+            "Hem",
+            4.1
+          ],
+          [
+            "Finishing",
+            3.0
+          ]
+        ],
+        "smv": 20.4
+      },
+      {
+        "bottleneck": "Hood attach",
+        "category": "knit",
+        "id": "S08",
+        "machine": "flatlock",
+        "name": "Knit Hoodie",
+        "operations": [
+          [
+            "Cutting",
+            3.3
+          ],
+          [
+            "Body assembly",
+            5.8
+          ],
+          [
+            "Hood attach",
+            8.0
+          ],
+          [
+            "Pocket",
+            5.1
+          ],
+          [
+            "Finishing",
+            3.8
+          ]
+        ],
+        "smv": 26.0
+      },
+      {
+        "bottleneck": "Pocket attach",
+        "category": "woven",
+        "id": "S09",
+        "machine": "bartack",
+        "name": "Cargo Short",
+        "operations": [
+          [
+            "Cutting",
+            3.0
+          ],
+          [
+            "Pocket attach",
+            6.9
+          ],
+          [
+            "Inseam",
+            4.4
+          ],
+          [
+            "Waistband",
+            4.3
+          ],
+          [
+            "Finishing",
+            3.1
+          ]
+        ],
+        "smv": 21.7
+      },
+      {
+        "bottleneck": "Sleeve set",
+        "category": "denim",
+        "id": "S10",
+        "machine": "bartack",
+        "name": "Denim Jacket",
+        "operations": [
+          [
+            "Cutting",
+            4.3
+          ],
+          [
+            "Front assembly",
+            7.4
+          ],
+          [
+            "Sleeve set",
+            9.3
+          ],
+          [
+            "Collar",
+            7.1
+          ],
+          [
+            "Finishing",
+            5.9
+          ]
+        ],
+        "smv": 34.0
+      }
+    ]
+  },
+  "meta": {
+    "as_of": "2026-10-14",
+    "description": "The critical line loses ten operators and historical attendance weakens.",
+    "holidays": [
+      "2026-10-20"
+    ],
+    "id": "04_absenteeism",
+    "name": "Operator absenteeism",
+    "synthetic": true
+  },
+  "schema_version": 1
+}
