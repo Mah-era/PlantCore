@@ -4,7 +4,7 @@
 
 PlantCore connects multi-factory planning, capacity-constrained scheduling, disruption investigation, recovery economics, supplier commitments, and continuous improvement in a desktop decision workspace.
 
-[Repository](https://github.com/Mah-era/PlantCore) · [Project showcase](https://mah-era.github.io/PlantCore/) · [Detailed project report](project-report.md) · [Requirement coverage](docs/requirement-coverage.md)
+[Live interactive application](https://mah-era.github.io/PlantCore/) · [Repository](https://github.com/Mah-era/PlantCore) · [Detailed project report](project-report.md) · [Requirement coverage](docs/requirement-coverage.md)
 
 ![PlantCore production control tower](docs/images/control-tower.jpg)
 
@@ -26,7 +26,13 @@ A substantial product and engineering upgrade introduces nine focused workspaces
 
 Charts serve specific questions: output versus target, factory exposure, quality/adherence trends, downtime contribution, daily capacity heatmap, stage Gantt, WIP trajectories, recovery cost composition, cost–delivery trade-offs, and benchmark comparison. Every chart uses the selected file’s records or explicitly disclosed model assumptions.
 
-## Run locally
+## Run PlantCore
+
+### Open the hosted application
+
+Use [PlantCore on GitHub Pages](https://mah-era.github.io/PlantCore/) to import CSV, XLSX, or JSON, analyze all nine workspaces, record decisions and actions, reload, and export reports. The hosted build runs the same FastAPI application and Python calculation modules inside a browser Web Worker using Pyodide. Its SQLite database is saved in that browser's IndexedDB. Initial startup downloads the Python runtime and packages; allow a short first load and an internet connection. Files and decisions stay on the current browser/device and are not shared between users or devices. Export the full JSON evidence pack for a portable record. Clearing site data or using a private session removes local records. This is not a centrally hosted, authenticated enterprise service.
+
+### Run the Python server
 
 Requires Python 3.10 or newer; CI uses Python 3.12.
 
@@ -49,7 +55,7 @@ docker compose up --build
 
 The Compose file binds the service to `127.0.0.1:8000` and stores SQLite in a named volume. The image runs as a non-root user and exposes `/api/health`. Container configuration is supplied; a Docker build was not verified in the development environment because Docker was unavailable.
 
-**Hosting:** GitHub Pages hosts the static project showcase. It cannot run the FastAPI backend. The complete application runs locally or on a Python/container host. Authentication, organizational access controls, and a production deployment are separate work.
+**Hosting:** GitHub Pages serves the full browser application. Pyodide executes the same API and calculation code locally in each browser. The optional Python server provides the same interface with filesystem SQLite storage and API documentation. Authentication, shared organizational access, and a managed production service remain separate work.
 
 ## Bring your own data
 
@@ -101,7 +107,7 @@ Automated checks cover scheduling constraints, quantity conservation at every st
 - Expected exposure uses explicit penalty, contribution-margin, and probability assumptions. It is not actual financial loss. Manufacturing cost is a model proxy; full material, scrap, cancellation, tax, and carbon accounting require additional inputs.
 - Monte Carlo uses fixed-seed shipment-date shocks; it tests uncertainty assumptions, not a calibrated factory reliability model.
 - Planned WIP is calculated from scheduled stage quantities. Actual milestone adherence and actual OTIF require shipment/stage confirmations that are not present in the current schema.
-- This is a **single-user local application**. Named owners and approvers are recorded, but authentication, role enforcement, tamper-evident auditing, external notifications, ERP integration, and production observability are not implemented.
+- This is a **single-user browser or local-server application**. Hosted browser records are private to that browser profile. Named owners and approvers are recorded, but authentication, role enforcement, tamper-evident auditing, external notifications, ERP integration, and production observability are not implemented.
 
 See the [coverage matrix](docs/requirement-coverage.md) for the complete requirement review and [project report](project-report.md) for formulas, architecture, development history, and operating limits.
 
@@ -114,6 +120,7 @@ See the [coverage matrix](docs/requirement-coverage.md) for the complete require
 - `app/store.py` — SQLite persistence and atomic decision/commitment insertion.
 - `app/importers.py`, `app/scenarios.py` — file conversion and validation.
 - `web/` — desktop interface, chart components, dialogs, navigation and state.
+- `site/`, `scripts/build_pages.py` — browser Python runtime, API transport, IndexedDB persistence, and Pages packaging.
 - `tests/`, `scripts/validate_scenarios.py` — regression tests and reservation reconciliation.
 
 API documentation is available at `/docs` when the server is running.

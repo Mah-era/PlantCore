@@ -125,17 +125,28 @@ async function uploadScenario(file) {
     $("#scenarioUpload").value = "";
   }
 }
-function downloadReport(type) {
+async function downloadReport(type) {
   if (!type) return;
   const path =
     type === "scenario" ? "/api/scenarios/export" : "/api/reports/" + type;
-  const a = document.createElement("a");
-  a.href = path;
-  a.download = "";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  toast("Preparing download");
+  try {
+    const response = await fetch(path);
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || "Report download failed");
+    }
+    const url = URL.createObjectURL(await response.blob());
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = type === "scenario" ? "plantcore-working-scenario.json" : `plantcore-${type}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    toast("Report downloaded");
+  } catch (error) {
+    toast(error.message);
+  }
 }
 async function showDefinitions() {
   const d = await api("/definitions");

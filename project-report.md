@@ -2,15 +2,15 @@
 
 ## Project report and implementation record
 
-**Report date:** 15 October 2026 (Asia/Dhaka)  
+**Report date:** 16 October 2026 (Asia/Dhaka)
 **Repository:** `mah-era/PlantCore`  
-**Application:** local FastAPI web application with SQLite persistence and a desktop-oriented dashboard  
-**Implementation status:** Version 0.2 professional desktop decision workspace; production deployment gates remain explicit
+**Application:** FastAPI and SQLite decision workspace, available as a local server and an interactive browser build on GitHub Pages
+**Implementation status:** Version 0.2 professional desktop decision workspace with browser deployment; production deployment gates remain explicit
 **Data status:** packaged examples and 20 scenario files are synthetic; uploaded files may be user supplied and retain their own synthetic label
 
 This report records the business concept, the software that exists, its data and calculations, the user workflow, the validation performed, and the remaining gaps. “Implemented” means there is corresponding executable code in this repository. It does not mean a live factory integration or production deployment. All dates, prices, capacity, probability, and performance values from packaged examples are simulated.
 
-> **Current release:** Chapter 18 documents the version 0.2 transformation and supersedes implementation-status claims in the retained earlier record (chapters 1–17). The current full requirement review is in [docs/requirement-coverage.md](docs/requirement-coverage.md).
+> **Current release:** Chapter 18 documents the version 0.2 transformation. Chapter 19 documents the interactive GitHub Pages deployment and supersedes earlier hosting claims. The current full requirement review is in [docs/requirement-coverage.md](docs/requirement-coverage.md).
 
 ## 1. Executive summary
 
@@ -785,3 +785,29 @@ Desktop browser tests on an isolated database confirmed:
 - Creating a RACI action adds the action to the execution workspace and event ledger.
 
 These tests do not demonstrate the correctness of every possible input or certify industrial deployment. Real-world acceptance additionally requires representative factory data, finance reconciliation, uncertainty calibration, security review and monitored operation.
+
+## 19. Interactive GitHub Pages deployment — 16 October 2026
+
+### 19.1 Deployment outcome
+
+The application at `https://mah-era.github.io/PlantCore/` is an interactive desktop workspace. It supports the same nine views and working flows as the local FastAPI application: importing compatible CSV, XLSX, and full/order-row JSON; recalculating the selected file; navigating orders and incidents; recording decisions, commitments, actions, hypotheses, negotiations, pilots, and checkpoints; reloading; and exporting HTML, JSON, CSV, and working-scenario reports. The earlier static showcase has been replaced in the Pages publishing pipeline.
+
+### 19.2 Architecture
+
+GitHub Pages serves static files. `scripts/build_pages.py` assembles a release directory containing the existing `web/` application, the Python source modules, 20 full synthetic scenarios, an order-table template, and a file manifest. `.github/workflows/pages.yml` builds this directory and publishes it as the Pages artifact.
+
+`site/browser-adapter.js` intercepts the dashboard's `/api/` calls and sends them to a dedicated browser Web Worker. `site/python-worker.js` loads pinned Pyodide 0.28.3 and the FastAPI, Pydantic, SQLite, and OpenPyXL dependencies. It mounts the packaged Python files into Pyodide's virtual filesystem, invokes the actual FastAPI application through its ASGI interface, and returns HTTP status, headers, and body to the existing JavaScript views. Requests are serialized because one Python interpreter and one active scenario share the worker. Python's thread-pool calls execute inline because browser WebAssembly cannot start the application's normal worker threads. The same Python scheduling, financial, validation, reporting, and workflow code is therefore used in both deployment modes.
+
+The worker copies the SQLite database into IndexedDB after every successful mutating request. On startup, it restores that database before the API serves the first request. This retains uploads, the active scenario, action updates, approved decisions, commitments, and other event records across reloads in the same browser profile. The browser's location, privacy settings, and storage quota govern retention. Clearing site storage removes the data. There is no central database or synchronization between devices, browsers, tabs, or users. The first load needs internet access to retrieve the pinned Python runtime and package files; normal Pages hosting also needs network access.
+
+Files are parsed in the browser worker. The application does not transmit uploaded factory data to a PlantCore server. Public CDN requests load program code and dependencies. The full JSON evidence pack is the portable record of analysis and actions; the working scenario export carries source-level changes but is not a complete database backup. For an organizational deployment, a managed backend and authenticated shared storage are still necessary.
+
+### 19.3 Browser verification
+
+The assembled Pages directory was served on a separate local static port and exercised through the browser UI. The baseline network loaded with its 30 orders. Uploading `examples/sample-orders.csv` changed the control tower to three orders, 3,800 units, one late order, one blocked order, 33.3% forecast OTIF, and no invented historical yield; the capacity view showed that uploaded network. A JSON evidence-pack download contained matching scenario and portfolio totals. A reload restored the same active uploaded scenario. A full scenario JSON for recurring needle failures changed the control tower to its 30-order disruption case, and the execution workspace loaded the incident's RACI actions. A new action was recorded and remained visible after reload. An XLSX version of the order table imported and recalculated correctly. The browser build uses the 20 packaged scenarios through the same manifest.
+
+These checks cover representative input formats and critical state transitions. They do not prove all possible files, browser storage failure modes, or simultaneous-tab behavior. The local Python test suite and 20-scenario invariant sweep remain the automated calculation checks. The Pages build must pass its deployment workflow and be tested at the public URL before a live deployment is considered verified.
+
+### 19.4 Operating and production limits
+
+The desktop browser needs JavaScript, WebAssembly, IndexedDB, and sufficient memory for Pyodide and the planning model. Initialization is slower than the local server because the browser downloads and starts Python. A private-browsing session or cleared site data does not preserve decisions. Browser records are local and cannot serve an authenticated team war room; named actors are recorded text fields rather than verified identities. The underlying planning, financial, causal, and operational limitations in chapters 18 and the requirement matrix continue to apply unchanged.

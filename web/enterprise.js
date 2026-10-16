@@ -1011,7 +1011,7 @@ async function governance() {
       "Evidence, validation & governance",
       "Data & decision ledger",
       "Trace input coverage, model assumptions, planning alternatives, and recorded management decisions.",
-      `<a class="secondary" href="/sample-orders.csv" download>↓ Order template</a><button class="primary" onclick="downloadReport('management.json')">Export full evidence pack</button>`,
+      `<a class="secondary" href="./sample-orders.csv" download>↓ Order template</a><button class="primary" onclick="downloadReport('management.json')">Export full evidence pack</button>`,
     ) +
     `<div class="grid-equal">${card(
       "Source coverage",
