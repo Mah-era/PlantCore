@@ -1445,6 +1445,11 @@ def analytics():
     return analyze(scenario())
 
 
+@app.get("/visualizations.js")
+def visualization_script():
+    return FileResponse(WEB / "visualizations.js")
+
+
 @app.get("/api/audit")
 def audit():
     sid = store.active_id()

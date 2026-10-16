@@ -1225,3 +1225,16 @@ dialog::backdrop {
     color: black !important;
   }
 }
+
+/* File-driven visual evidence library and portable report. */
+.visual-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.visual-panel { min-width: 0; overflow: hidden; align-self: start; }
+.visual-panel .card-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.visual-panel h2 { font-size: 17px; line-height: 1.45; margin: 6px 0 18px; }
+.visual-panel .chart { width: 100%; height: auto; }
+.visual-filters { flex-wrap: wrap; margin-bottom: 24px; }
+.visual-evidence { border-top: 1px solid #e2e9ee; margin-top: 12px; padding-top: 12px; }
+.visual-evidence summary { cursor: pointer; color: #355e7f; font-size: 12px; }
+.visual-evidence .table-wrap { max-height: 300px; overflow: auto; margin-top: 12px; }
+@media print { .visual-grid { display:block; } .visual-panel { break-inside:avoid; margin-bottom:20px; } .visual-filters { display:none; } }
+.visual-panel .chart-label { font-size: 15px; }

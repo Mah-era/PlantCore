@@ -53,7 +53,11 @@ function saveWorkspace() {
     );
   } catch {}
 }
-function sparkChart(rows, series, { percent = false, height = 240 } = {}) {
+function sparkChart(
+  rows,
+  series,
+  { percent = false, height = 240, ceiling = null } = {},
+) {
   if (!rows.length)
     return emptyChart(
       "No historical observations supplied. Import a full scenario to analyze trends.",
@@ -69,7 +73,9 @@ function sparkChart(rows, series, { percent = false, height = 240 } = {}) {
     .filter((x) => x !== null && x !== undefined);
   if (!values.length)
     return emptyChart("No observations available for this measure.");
-  const max = percent ? Math.max(1, ...values) : Math.max(1, ...values) * 1.12;
+  const max =
+    ceiling ??
+    (percent ? Math.max(1, ...values) : Math.max(1, ...values) * 1.12);
   const x = (i) =>
       left + (i * (w - left - right)) / Math.max(1, rows.length - 1),
     y = (v) => h - bottom - (v / max) * (h - top - bottom);
@@ -1147,7 +1153,7 @@ window.addEventListener("hashchange", () => {
   const page = location.hash.slice(1);
   if (page !== state.page) go(page);
 });
-(async () => {
+window.addEventListener("DOMContentLoaded", async () => {
   try {
     await loadScenarioCatalog();
     const meta = state.scenarios.find((s) => s.id === state.scenario);
@@ -1164,7 +1170,7 @@ window.addEventListener("hashchange", () => {
     $("#content").innerHTML =
       `<div class="card panel"><h2>Could not load PlantCore</h2><p>${esc(e.message)}</p></div>`;
   }
-})();
+});
 async function runSimulation() {
   const target = $("#simulationResults");
   if (!target) return;

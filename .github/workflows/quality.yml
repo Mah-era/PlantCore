@@ -18,6 +18,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python -m compileall -q app
-      - run: node --check web/app.js && node --check web/enterprise.js && node --check site/browser-adapter.js && node --check site/python-worker.js
+      - run: node --check web/app.js && node --check web/enterprise.js && node --check web/visualizations.js && node --check site/browser-adapter.js && node --check site/python-worker.js
       - run: python scripts/validate_scenarios.py
+      - run: python scripts/validate_visualizations.py
       - run: python scripts/build_pages.py

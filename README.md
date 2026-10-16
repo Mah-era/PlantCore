@@ -26,6 +26,8 @@ A substantial product and engineering upgrade introduces nine focused workspaces
 
 Charts serve specific questions: output versus target, factory exposure, quality/adherence trends, downtime contribution, daily capacity heatmap, stage Gantt, WIP trajectories, recovery cost composition, cost–delivery trade-offs, and benchmark comparison. Every chart uses the selected file’s records or explicitly disclosed model assumptions.
 
+The **Visual analytics** workspace adds 30 analytical views with category filters, hover values, source tables, and per-chart CSV downloads. Delivery, network, cost, capacity, quality, execution, and evidence panels use the active dataset. **Export report → Visual analysis report · HTML** downloads all 30 views as a self-contained, printable report with embedded SVG charts and expandable data tables. Charts without the necessary observations show an explicit missing-evidence state. Ranked charts show the top 12 categories; the data table and CSV retain all rows.
+
 ## Run PlantCore
 
 ### Open the hosted application

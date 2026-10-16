@@ -127,6 +127,7 @@ async function uploadScenario(file) {
 }
 async function downloadReport(type) {
   if (!type) return;
+  if (type === "visual-report") return downloadVisualReport();
   const path =
     type === "scenario" ? "/api/scenarios/export" : "/api/reports/" + type;
   try {

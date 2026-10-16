@@ -10,7 +10,7 @@ if TARGET.exists():
     shutil.rmtree(TARGET)
 TARGET.mkdir()
 
-for filename in ("app.css", "app.js", "enterprise.js"):
+for filename in ("app.css", "app.js", "enterprise.js", "visualizations.js"):
     shutil.copy2(ROOT / "web" / filename, TARGET / filename)
 shutil.copy2(ROOT / "examples" / "sample-orders.csv", TARGET / "sample-orders.csv")
 for filename in ("browser-adapter.js", "python-worker.js"):
@@ -21,6 +21,7 @@ html = html.replace('href="/app.css"', 'href="./app.css"')
 html = html.replace('<script src="/app.js"></script>',
                     '<script src="./browser-adapter.js"></script>\n    <script src="./app.js"></script>')
 html = html.replace('src="/enterprise.js"', 'src="./enterprise.js"')
+html = html.replace('src="/visualizations.js"', 'src="./visualizations.js"')
 html = html.replace("PlantCore / Operations workspace <b>02</b>",
                     "PlantCore / Browser workspace <b>03</b>")
 html = html.replace("Local planning workspace; authentication not configured",
