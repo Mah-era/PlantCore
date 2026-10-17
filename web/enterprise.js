@@ -1,11 +1,11 @@
 /* PlantCore desktop workspace. All chart marks derive from the active API snapshot. */
 const palette = {
-  navy: "#355e7f",
-  teal: "#408d83",
-  amber: "#c18c47",
-  red: "#b85f5e",
-  slate: "#90a7b9",
-  pale: "#d5e1ea",
+  navy: "#3d5a80",
+  teal: "#3d7d78",
+  amber: "#ee6c4d",
+  red: "#c65345",
+  slate: "#98c1d9",
+  pale: "#d7e1e8",
 };
 const num = (n) =>
   Number(n || 0).toLocaleString("en-US", { maximumFractionDigits: 0 });
