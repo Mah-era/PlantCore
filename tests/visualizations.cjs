@@ -27,4 +27,23 @@ context.fixture={portfolio:[{customer:'__proto__',quantity:1,expected_exposure:2
 const unusual=vm.runInContext('buildVisuals(fixture,[],{events:[]})',context);
 assert.equal(unusual[2].rows[0].value,2);
 assert.ok(!unusual[2].html.includes('<script>'));
+// A shared deadline must retain early shipment events and late shipment tails.
+context.fixture.portfolio = [
+  {id:'early',customer:'QA',quantity:100,status:'on_time',due_date:'2026-11-10',plan:{expected_ship:'2026-11-02'}},
+  {id:'late',customer:'QA',quantity:200,status:'late',due_date:'2026-11-10',plan:{expected_ship:'2026-11-20'}},
+  {id:'blocked',customer:'QA',quantity:50,status:'blocked',due_date:'2026-11-10'},
+];
+const timeline=vm.runInContext('buildVisuals(fixture,[],{events:[]})[5].rows',context);
+assert.deepEqual(JSON.parse(JSON.stringify(timeline)),[
+  {date:'2026-11-02',required:0,planned:100},
+  {date:'2026-11-10',required:350,planned:100},
+  {date:'2026-11-20',required:350,planned:300},
+]);
+// Verify actual calendar spacing and step paths rather than linear interpolation.
+const enterprise=fs.readFileSync(require('node:path').join(__dirname,'../web/enterprise.js'),'utf8');
+context.fmt=x=>x;context.legend=()=>'';
+vm.runInContext(enterprise.slice(enterprise.indexOf('function sparkChart('),enterprise.indexOf('lineChart =')),context);
+const stepSvg=vm.runInContext("sparkChart([{date:'2026-11-02',v:100},{date:'2026-11-10',v:100},{date:'2026-11-20',v:300}],[{key:'v',label:'Shipments',color:'#123'}],{timeScale:true,step:true})",context);
+assert.ok(stepSvg.includes('H319.22222222222223 V'), 'Eight of eighteen days must use proportional spacing');
+assert.ok(stepSvg.includes('H662 V'), 'Late shipment must appear at timeline end');
 console.log('Visual reconciliation passed: full scenario, order-only file, missing history, and unusual labels.');

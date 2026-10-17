@@ -1238,3 +1238,5 @@ dialog::backdrop {
 .visual-evidence .table-wrap { max-height: 300px; overflow: auto; margin-top: 12px; }
 @media print { .visual-grid { display:block; } .visual-panel { break-inside:avoid; margin-bottom:20px; } .visual-filters { display:none; } }
 .visual-panel .chart-label { font-size: 15px; }
+
+.import-progress { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; background: rgba(245,248,251,.94); color: #253e55; font-size: 18px; font-weight: 600; padding: 48px; text-align: center; }

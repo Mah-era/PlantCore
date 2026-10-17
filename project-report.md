@@ -823,3 +823,9 @@ Every panel includes its analytical question, units, method note, source name, p
 The new Visual analysis report HTML export embeds all 30 panels, SVG charts, stylesheet, source notes, and data tables in one printable document. It requires no network resources once downloaded. The export re-reads the active scenario, ensuring that an earlier visual snapshot cannot be exported as though it were the newly selected file. Existing management HTML/JSON, order CSV, and working-scenario outputs remain available.
 
 Validation includes JavaScript syntax checks, browser rendering and category filtering, downloaded visual HTML inspection, and aggregate reconciliation against a full synthetic network and a small CSV import. The reconciliation checks order/unit totals, customer exposure, cumulative demand, manufacturing totals, missing history, nonfinite chart coordinates, and unusual labels. The visual library does not add new calibrated forecasting or causal models; the existing model boundaries still apply.
+
+## 21. Live upload-to-report verification — 17 October 2026
+
+A deployed-browser audit exercised JSON, CSV, and XLSX uploads across all ten workspaces, downloaded reports, and reconciled the resulting analytical payloads against fresh Python calculations. The three datasets produced distinct order quantities, on-time outcomes, commercial exposure, capacity and evidence coverage. Invalid CSV validation preserved the last valid dataset, and reload retained the imported workbook. Detailed inputs, outcomes, limitations, and corrected defects are recorded in [Live upload verification](docs/live-upload-verification.md).
+
+The audit corrected the cumulative shipment graph to include shipment dates outside the deadline range and show calendar-proportional steps, and added an explicit import-analysis status overlay to prevent apparent nonresponse and conflicting interactions while processing.

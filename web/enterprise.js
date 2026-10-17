@@ -56,7 +56,7 @@ function saveWorkspace() {
 function sparkChart(
   rows,
   series,
-  { percent = false, height = 240, ceiling = null } = {},
+  { percent = false, height = 240, ceiling = null, timeScale = false, step = false } = {},
 ) {
   if (!rows.length)
     return emptyChart(
@@ -76,8 +76,11 @@ function sparkChart(
   const max =
     ceiling ??
     (percent ? Math.max(1, ...values) : Math.max(1, ...values) * 1.12);
+  const timestamps = timeScale ? rows.map((r) => Date.parse(r.date + "T00:00:00Z")) : [];
   const x = (i) =>
-      left + (i * (w - left - right)) / Math.max(1, rows.length - 1),
+      left + (w - left - right) * (timeScale
+        ? (timestamps[i] - timestamps[0]) / Math.max(1, timestamps.at(-1) - timestamps[0])
+        : i / Math.max(1, rows.length - 1)),
     y = (v) => h - bottom - (v / max) * (h - top - bottom);
   return `<svg class="chart" viewBox="0 0 ${w} ${h}" role="img" aria-label="${esc(series.map((s) => s.label).join(" versus "))} over time">${Array.from(
     { length: 5 },
@@ -94,7 +97,9 @@ function sparkChart(
             started = false;
             return "";
           }
-          const p = `${started ? "L" : "M"}${x(i)},${y(r[s.key])}`;
+          const p = started && step
+            ? `H${x(i)} V${y(r[s.key])}`
+            : `${started ? "L" : "M"}${x(i)},${y(r[s.key])}`;
           started = true;
           return p;
         })

@@ -71,6 +71,7 @@ async function loadScenarioCatalog() {
     : "Uploaded order file";
 }
 async function changeScenario(id) {
+  if (state.datasetBusy) return;
   try {
     await api("/scenarios/select", {
       method: "POST",
@@ -96,7 +97,16 @@ async function changeScenario(id) {
   }
 }
 async function uploadScenario(file) {
-  if (!file) return;
+  if (!file || state.datasetBusy) return;
+  state.datasetBusy = true;
+  const surfaces = [...document.querySelectorAll("main, aside")].map((el) => [el, el.inert]);
+  surfaces.forEach(([el]) => { el.inert = true; });
+  const progress = document.createElement("div");
+  progress.className = "import-progress";
+  progress.setAttribute("role", "status");
+  progress.setAttribute("aria-live", "polite");
+  progress.textContent = "Validating and analyzing " + file.name + "…";
+  document.body.appendChild(progress);
   try {
     if (file.size > 3000000) throw new Error("Scenario file exceeds 3 MB");
     const response = await fetch(
@@ -123,6 +133,9 @@ async function uploadScenario(file) {
     toast(e.message);
   } finally {
     $("#scenarioUpload").value = "";
+    progress.remove();
+    surfaces.forEach(([el, wasInert]) => { el.inert = wasInert; });
+    state.datasetBusy = false;
   }
 }
 async function downloadReport(type) {

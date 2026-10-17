@@ -84,7 +84,7 @@ function buildVisuals(a, actions, audit) {
           : html });
   const bar = (category, title, unit, note, rows, signed = false) =>
     add(category, title, unit, note, rows, visualBar(rows, unit, signed));
-  const series = (category, title, unit, note, rows, lines, percent = false) =>
+  const series = (category, title, unit, note, rows, lines, percent = false, options = {}) =>
     add(
       category,
       title,
@@ -93,6 +93,7 @@ function buildVisuals(a, actions, audit) {
       rows,
       sparkChart(rows, lines, {
         percent,
+        ...options,
         ceiling:
           lines[0]?.key === "rework_rate"
             ? Math.max(0.01, ...rows.map((r) => (r.rework_rate || 0) * 1.15))
@@ -171,7 +172,11 @@ function buildVisuals(a, actions, audit) {
       value: feasible.filter(fn).length,
     })),
   );
-  const dueDays = [...new Set(p.map((r) => r.due_date))].sort();
+  // Include every shipment event, including dates outside the deadline range.
+  const dueDays = [...new Set([
+    ...p.map((r) => r.due_date),
+    ...feasible.map((r) => r.plan.expected_ship),
+  ])].filter(Boolean).sort();
   const due = dueDays.map((date) => ({
     date,
     required: p
@@ -185,7 +190,7 @@ function buildVisuals(a, actions, audit) {
     "Delivery",
     "Does planned shipment keep up with due demand?",
     "cumulative units",
-    "Required includes blocked orders; planned includes feasible full-order shipments.",
+    "Required includes blocked orders; planned includes feasible full-order shipments. Steps occur on actual deadline and shipment dates.",
     due,
     [
       {
@@ -196,6 +201,8 @@ function buildVisuals(a, actions, audit) {
       },
       { key: "planned", label: "Planned shipments", color: palette.teal },
     ],
+    false,
+    { timeScale: true, step: true },
   );
   const risk = p
     .filter((r) => r.on_time_probability != null)
