@@ -281,8 +281,7 @@ async function tower() {
       "A connected view of delivery confidence, operating performance, and decisions that need attention.",
       `<button class="secondary" onclick="go('schedule')">View production plan →</button>`,
     ) +
-    `<div class="kpi-grid">${kpi("Active orders", t.orders, num(t.units) + " units in the network")}${kpi("Forecast OTIF", pct(t.on_time / t.orders), "On-time orders / all orders", "good")}${kpi("Orders needing intervention", t.late + t.blocked, t.blocked + " blocked · " + t.late + " late", "alert")}${kpi("Expected delivery exposure", money(t.expected_exposure), "Penalty + margin · modeled", "alert")}${kpi("First-pass yield", pctOrNA(k.first_pass_yield), "Observed acceptable / output")}${kpi("Overdue actions", k.overdue_actions, k.open_incidents + " open exceptions")}</div>` +
-    `<div class="insight"><div class="icon">↗</div><div><strong>${t.late + t.blocked} of ${t.orders} orders need a production decision</strong><p>${most ? `${esc(most.id)} carries the largest modeled delivery exposure at ${money(most.expected_exposure)}. ${most.status === "blocked" ? "Its schedule is blocked by a hard constraint." : "Its shipment is " + Math.abs(most.slack_days) + " days beyond the deadline."}` : "All orders have a feasible on-time plan; continue monitoring release gates and execution."} ${o.kpis.overdue_actions} response actions are overdue.</p></div><button class="quiet" style="margin-left:auto" onclick="openRiskOrders()">Review exceptions →</button></div>` +
+    `<div class="executive-band"><section class="network-outlook" aria-label="Network decision brief"><span class="eyebrow">Network outlook / ${fmt(a.as_of)}</span><div class="outlook-count">${t.late + t.blocked}<small>/ ${t.orders}</small></div><h2>Orders need a production decision</h2><p>${most ? `${esc(most.id)} carries the largest modeled delivery exposure at ${money(most.expected_exposure)}. ${most.status === "blocked" ? "Its schedule is blocked by a hard constraint." : "Its shipment is " + Math.abs(most.slack_days) + " days beyond the deadline."}` : "All orders have a feasible on-time plan. Continue monitoring release gates and execution."} ${k.overdue_actions} response actions are overdue.</p>${status}<button class="secondary" onclick="openRiskOrders()">Review exceptions <span aria-hidden="true">→</span></button></section><div class="kpi-grid">${kpi("Active orders", t.orders, num(t.units) + " units in the network")}${kpi("Forecast OTIF", pct(t.on_time / Math.max(1,t.orders)), "On-time orders / all orders", "good")}${kpi("Delivery exposure", money(t.expected_exposure), "Penalty + margin · modeled", "alert")}${kpi("First-pass yield", pctOrNA(k.first_pass_yield), "Observed acceptable / output")}${kpi("Orders needing intervention", t.late + t.blocked, t.blocked + " blocked · " + t.late + " late", "alert")}${kpi("Overdue actions", k.overdue_actions, k.open_incidents + " open exceptions")}</div></div>` +
     `<div class="grid-two">${card("Actual output against the operating plan", lineChart(a.history.slice(-14)), "Units / production day")}${card(
       "Delivery exposure is concentrated by factory",
       hbars(
@@ -297,7 +296,6 @@ async function tower() {
             `state.orderFactory=${jsarg(r.id)};state.orderRisk='risk';go('orders')`,
         },
       ) +
-        status +
         '<p class="chart-foot">Expected penalty and margin exposure, not a booked financial loss. Select a factory to inspect its at-risk orders.</p>',
       "USD · active portfolio",
     )}</div>` +
@@ -439,23 +437,24 @@ function heatmapHTML(a) {
               u === null
                 ? ""
                 : u === 0
-                  ? "#edf2f5"
+                  ? "#f0f2f4"
                   : u < 0.5
-                    ? "#b6cbd9"
+                    ? "#98c1d9"
                     : u < 0.85
-                      ? "#678ca6"
+                      ? "#557798"
                       : u <= 1.00001
-                        ? "#355e7f"
-                        : "#b85f5e";
-            return `<td><button class="heat-cell ${u === null ? "unavailable" : ""}" style="${color ? "background:" + color + ";color:" + (u > 0.5 ? "white" : "#304d63") : ""}" title="${esc(l.id)} · ${c.date} · ${u === null ? "Unavailable" : pct(u) + " reserved"} · ${c.units} units" aria-label="${esc(l.id)} ${c.date} capacity details" onclick="capacityCell(${jsarg(l.id)},${jsarg(c.date)})">${u === null ? "—" : u > 0.05 ? Math.round(u * 100) : ""}</button></td>`;
+                        ? "#3d5a80"
+                        : "#b24136";
+            return `<td><button class="heat-cell ${u === null ? "unavailable" : ""}" style="${color ? "background:" + color + ";color:" + (u >= 0.5 ? "white" : "#293241") : ""}" title="${esc(l.id)} · ${c.date} · ${u === null ? "Unavailable" : pct(u) + " reserved"} · ${c.units} units" aria-label="${esc(l.id)} ${c.date} capacity details" onclick="capacityCell(${jsarg(l.id)},${jsarg(c.date)})">${u === null ? "—" : u > 0.05 ? Math.round(u * 100) : ""}</button></td>`;
           })
           .join("")}</tr>`,
     )
     .join("")}</tbody></table></div>${legend([
-    ["No reservation", "#edf2f5"],
-    ["Under 50%", "#b6cbd9"],
-    ["50–85%", "#678ca6"],
-    ["85–100%", "#355e7f"],
+    ["No reservation", "#f0f2f4"],
+    ["Under 50%", "#98c1d9"],
+    ["50–85%", "#557798"],
+    ["85–100%", "#3d5a80"],
+    ["Over capacity", "#b24136"],
     ["Unavailable", "#e2e8ec"],
   ])}<p class="chart-foot">In-house minutes, including changeover. Click a day for capacity, external output, and the orders using it. Sunday, holidays, maintenance and shutdowns are excluded.</p>`;
 }
@@ -1109,6 +1108,7 @@ const pageNames = {
   governance: "Data & decision ledger",
 };
 go = async function (page) {
+  if (typeof toggleNavigation === 'function') toggleNavigation(false);
   if (!pages[page]) page = "overview";
   requestController.abort();
   requestController = new AbortController();
@@ -1124,7 +1124,7 @@ go = async function (page) {
           (page === "incidentDetail" && b.dataset.page === "investigate"),
       ),
     );
-  $("#crumb-current").textContent = pageNames[page].toUpperCase();
+  $("#crumb-current").textContent = pageNames[page];
   document.title = pageNames[page] + " · PlantCore";
   history.replaceState(null, "", "#" + page);
   saveWorkspace();
@@ -1133,6 +1133,7 @@ go = async function (page) {
   try {
     await pages[page]();
     if (epoch !== navigation) return;
+    if (typeof finishWorkspacePresentation === 'function') finishWorkspacePresentation();
     saveWorkspace();
   } catch (e) {
     if (e.name === "AbortError") return;

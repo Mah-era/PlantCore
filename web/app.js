@@ -187,7 +187,11 @@ function header(kicker, title, subtitle, actions = "") {
   return `<div class="page-head"><div><div class="eyebrow">${kicker}</div><h1>${title}</h1><p>${subtitle}</p></div><div class="toolbar">${actions}</div></div>`;
 }
 function card(title, body, side = "") {
-  return `<section class="card panel"><div class="section-title"><h2>${title}</h2><span>${side}</span></div>${body}</section>`;
+  return `<section class="card panel"><div class="section-title"><h2>${title}</h2>${side ? `<span>${side}</span>` : ""}</div>${frameCharts(body)}</section>`;
+}
+function frameCharts(html) {
+  return html.replace(/<svg class="chart"[\s\S]*?<\/svg>/g, (svg) =>
+    `<div class="chart-viewport" tabindex="0" role="region" aria-label="Analytical chart · scroll horizontally to inspect">${svg}</div>`);
 }
 function table(headers, rows) {
   return `<div class="table-wrap"><table class="table"><thead><tr>${headers.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.join("")}</tbody></table></div>`;

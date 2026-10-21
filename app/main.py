@@ -270,17 +270,17 @@ def export_scenario():
 
 @app.get("/")
 def home():
-    return FileResponse(WEB / "index.html")
+    return FileResponse(WEB / "index.html", headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/app.css")
 def css():
-    return FileResponse(WEB / "app.css")
+    return FileResponse(WEB / "app.css", headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/app.js")
 def javascript():
-    return FileResponse(WEB / "app.js")
+    return FileResponse(WEB / "app.js", headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/sample-orders.csv")
@@ -1426,6 +1426,24 @@ def report_html():
         + "</section>"
     )
     html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Production report — {e(report['scenario']['name'])}</title><style>body{{font:14px Arial,sans-serif;color:#202c3a;margin:36px}}h1,h2{{color:#2b5797}}header{{border-bottom:4px solid #ed7d31;padding-bottom:15px}}.meta{{color:#66788a}}.metrics{{display:flex;gap:12px;margin:22px 0}}.metric{{background:#f2f5f8;padding:15px;flex:1;border-radius:6px}}.metric strong{{display:block;font-size:22px}}table{{border-collapse:collapse;width:100%;margin:10px 0 25px}}th,td{{border-bottom:1px solid #dfe5ed;text-align:left;padding:8px;font-size:11px}}th{{background:#eef3f8}}.caveat{{background:#fff3e7;padding:12px;border-left:4px solid #ed7d31}}@media print{{body{{margin:15mm}}section{{break-inside:avoid}}}}</style></head><body><header><h1>PlantCore Production Management Report</h1><div class="meta">{e(report['scenario']['name'])} · Scenario date {e(report['as_of'])} · Generated {e(report['generated_at'])} · {'SIMULATED' if report['scenario']['synthetic'] else 'UPLOADED DATA'}</div></header><div class="metrics"><div class="metric">Active orders<strong>{k['active_orders']}</strong></div><div class="metric">At risk / blocked<strong>{k['at_risk']}</strong></div><div class="metric">Forecast OTIF<strong>{k['forecast_otif']*100:.1f}%</strong></div><div class="metric">First-pass yield<strong>{f"{k['first_pass_yield']*100:.1f}%" if k['first_pass_yield'] is not None else 'N/A'}</strong></div></div><p><strong>Management insight:</strong> {e(report['overview']['insight'])}</p>{source_note}<section><h2>Order forecast</h2><table><thead><tr><th>Order</th><th>Customer</th><th>Factory / line</th><th>Units</th><th>Deadline</th><th>Forecast ship</th><th>Delay days</th></tr></thead><tbody>{order_rows}</tbody></table></section><section><h2>Incidents and owners</h2><table><thead><tr><th>Incident</th><th>Disruption</th><th>Order</th><th>Severity</th><th>Owner</th></tr></thead><tbody>{incident_rows}</tbody></table></section><section><h2>Approved recovery decisions</h2><table><thead><tr><th>Incident</th><th>Option</th><th>Approver</th><th>Rationale</th></tr></thead><tbody>{decision_rows or '<tr><td colspan="4">None recorded</td></tr>'}</tbody></table></section>{extra_sections}<p class="caveat">{e(report['caveat'])}</p></body></html>"""
+    report_style = """
+      body{font:13px/1.7 'Avenir Next','Segoe UI',Arial,sans-serif;color:#293241;background:#f4f3ee;max-width:1200px;margin:0 auto;padding:48px 32px}
+      header{border-bottom:2px solid #ee6c4d;padding-bottom:24px;margin-bottom:28px}
+      h1{color:#293241;font-size:36px;font-weight:550;letter-spacing:-1.3px;line-height:1.2}
+      h2{color:#293241;font-size:20px;font-weight:550;letter-spacing:-.5px}
+      h3{font-size:14px;color:#3d5a80}.meta{color:#647080;font-size:11px}
+      .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}
+      .metric{background:white;border:1px solid #e2e4e7;border-radius:10px;padding:22px;color:#647080;font-size:11px}
+      .metric strong{display:block;font-size:32px;font-weight:550;color:#293241;letter-spacing:-1px;margin-top:8px}
+      section{background:white;border:1px solid #e2e4e7;border-radius:12px;padding:24px;margin:22px 0;overflow-x:auto}
+      table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}th,td{text-align:left;padding:12px;border-bottom:1px solid #edf0f1;font-size:11px}
+      th{background:#f4f6f7;color:#647080;text-transform:uppercase;letter-spacing:.5px;font-size:9px}
+      .caveat{background:#f5f1e3;border-left:3px solid #ee6c4d;border-radius:0 8px 8px 0;padding:20px;font-size:11px}
+      @media(max-width:680px){body{padding:24px 16px}h1{font-size:28px}.metrics{grid-template-columns:repeat(2,1fr)}section{padding:18px}}
+      @media print{body{background:white;padding:0;margin:10mm}section{break-inside:avoid;border:0;padding:12px 0}header{break-after:avoid}}
+    """
+    style_start, style_end = html.index("<style>"), html.index("</style>") + 8
+    html = html[:style_start] + "<meta name='viewport' content='width=device-width,initial-scale=1'><style>" + report_style + "</style>" + html[style_end:]
     return Response(
         html,
         media_type="text/html; charset=utf-8",
@@ -1437,7 +1455,7 @@ def report_html():
 
 @app.get("/enterprise.js")
 def enterprise_script():
-    return FileResponse(WEB / "enterprise.js")
+    return FileResponse(WEB / "enterprise.js", headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/api/analytics")
@@ -1447,7 +1465,12 @@ def analytics():
 
 @app.get("/visualizations.js")
 def visualization_script():
-    return FileResponse(WEB / "visualizations.js")
+    return FileResponse(WEB / "visualizations.js", headers={"Cache-Control": "no-cache"})
+
+
+@app.get("/experience.js")
+def experience_js():
+    return FileResponse(WEB / "experience.js", headers={"Cache-Control": "no-cache"})
 
 
 @app.get("/api/audit")

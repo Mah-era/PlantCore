@@ -829,3 +829,29 @@ Validation includes JavaScript syntax checks, browser rendering and category fil
 A deployed-browser audit exercised JSON, CSV, and XLSX uploads across all ten workspaces, downloaded reports, and reconciled the resulting analytical payloads against fresh Python calculations. The three datasets produced distinct order quantities, on-time outcomes, commercial exposure, capacity and evidence coverage. Invalid CSV validation preserved the last valid dataset, and reload retained the imported workbook. Detailed inputs, outcomes, limitations, and corrected defects are recorded in [Live upload verification](docs/live-upload-verification.md).
 
 The audit corrected the cumulative shipment graph to include shipment dates outside the deadline range and show calendar-proportional steps, and added an explicit import-analysis status overlay to prevent apparent nonresponse and conflicting interactions while processing.
+
+## 22. Operations Studio redesign — 21 October 2026
+
+### 22.1 Product direction and scope
+
+The interface was rebuilt under one design system across all ten workspaces, both detail views, shared dialogs, forms, analytical panels, and downloadable HTML reports. The visual hierarchy now begins with an actionable network brief, six headline measures, and supporting operational evidence. Factory performance, recovery comparisons, execution records, and governance use the same visual vocabulary. The supplied blue, sky, coral, cream, and navy palette is retained, with explicit semantic green and red status treatments.
+
+The implementation includes a custom SVG monogram, coherent line icons, typography and spacing tokens, a grouped navigation rail, active-page indication, focus treatments, restrained hover transitions, reduced-motion support, and consistent empty/loading/error states. The 30-view visual library retains source notes, units, CSV exports, and expandable evidence tables, with numbered analytical questions and accessible filter state.
+
+### 22.2 Responsive and keyboard interaction
+
+The earlier desktop-only interface is superseded by desktop, tablet, and mobile compositions. At 900px the navigation becomes a drawer with an explicit close button, backdrop, focus trap, background isolation, and focus restoration. At 680px panels and forms stack, filters rearrange, and buttons retain touch-friendly dimensions. Long schedules, heatmaps, tables, and SVG charts use contained horizontal scrolling rather than forcing the full page wider or shrinking dense analytical labels indefinitely.
+
+Cmd/Ctrl+K opens a searchable workspace navigator. The skip link transfers focus to the current workspace without changing routes. Imports support keyboard activation. Active navigation and category filters expose their state through ARIA attributes. Dialogs and exports inherit the same hierarchy and palette.
+
+### 22.3 Implementation and deployment
+
+`web/app.css` is the central presentation layer. The new `web/experience.js` manages navigation, search, static icons, and accessibility decoration. Existing scheduling, recovery, finance, causal, and improvement logic is preserved. The management report's HTML style and visual report's embedded stylesheet are updated to match the application.
+
+The Pages packager now creates a content version from the distributed UI, worker, and Python files. The HTML's version query propagates through the worker to Python manifest and source requests. This reduces stale-cache mismatches after deployment and preserves existing IndexedDB data. Local static responses use revalidation headers. The CI JavaScript syntax gate now includes the experience layer.
+
+### 22.4 Review and evidence
+
+All 83 Python tests passed, the 20-scenario sweep passed, visual aggregates reconciled, JavaScript syntax checks passed, and the Pages build succeeded. Desktop and mobile checks covered all ten workspaces; a tablet review checked the improvement workspace and drawer. Further UI checks covered filtering, quick search, keyboard navigation, capacity drill-through, recovery selection, a commercial dialog, sample CSV upload, all five downloads, and reload persistence. The sample CSV produced 3 orders, 3,800 units, 33.3% forecast OTIF, rounded exposure of $4,854, and unavailable historical yield. Downloaded evidence matched those values.
+
+The updated screenshots, component decisions, responsive rules, and review limitations are documented in [Design system and review notes](docs/design-system.md). This release improves the experience; it does not change the limitations around authentication, shared hosting, live factory integration, causal verification, or forecast calibration described elsewhere in this report.

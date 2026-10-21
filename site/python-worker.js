@@ -52,11 +52,12 @@ async function initialize() {
   pyodide.FS.mkdirTree("/plantcore/examples");
   pyodide.FS.mkdirTree("/plantcore/web");
   // The scenario filenames come from the bundle manifest generated at build time.
-  const manifestResponse = await fetch("./py/manifest.json");
+  const bundleVersion = self.location.search;
+  const manifestResponse = await fetch(`./py/manifest.json${bundleVersion}`);
   if (!manifestResponse.ok) throw new Error("Python bundle manifest is missing");
   const manifest = await manifestResponse.json();
   await Promise.all(manifest.map(async (file) => {
-    const response = await fetch(`./py/${file}`);
+    const response = await fetch(`./py/${file}${bundleVersion}`);
     if (!response.ok) throw new Error(`Python bundle file is missing: ${file}`);
     pyodide.FS.writeFile(`/plantcore/${file}`, new Uint8Array(await response.arrayBuffer()));
   }));

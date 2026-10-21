@@ -6,7 +6,7 @@
 
 ![PlantCore production control tower](docs/images/control-tower.jpg)
 
-PlantCore is a desktop decision-support workspace for production managers, planners, quality teams, procurement, logistics, merchandising, finance, and factory leadership. It connects order allocation, capacity-constrained scheduling, disruption investigation, recovery economics, accountable execution, and continuous improvement in one operating model.
+PlantCore is a responsive decision-support workspace for production managers, planners, quality teams, procurement, logistics, merchandising, finance, and factory leadership. It connects order allocation, capacity-constrained scheduling, disruption investigation, recovery economics, accountable execution, and continuous improvement in one operating model.
 
 > **Try it now:** [Open the live PlantCore workspace](https://mah-era.github.io/PlantCore/). Import CSV, XLSX, or JSON and keep the analysis private in your browser.
 
@@ -41,13 +41,17 @@ It answers five operational questions:
 
 The interface uses the supplied PlantCore palette: a dependable blue foundation, a clear information accent, coral for intervention signals, and a warm off-white canvas for long analytical sessions.
 
+The Operations Studio design puts a network decision brief beside six key measures, then moves into operational trends and source evidence. Ten connected workspaces share the same typography, panel hierarchy, icons, tables, forms, and report treatment. Use **⌘K / Ctrl+K** to find a workspace. On tablets and phones, navigation becomes a focus-managed drawer, panels stack, and detailed charts and schedules retain readable dimensions inside scrollable regions.
+
 | Color | Use |
 | --- | --- |
-| `#3D5A80` | Primary blue: navigation, headings, trusted actions |
+| `#3D5A80` | Primary blue: actions, chart series, and information hierarchy |
 | `#98C1D9` | Information blue: secondary states, charts, supporting UI |
 | `#EE6C4D` | Signal coral: exceptions, risk, intervention emphasis |
 | `#F5F1E3` | Warm canvas: reports, surfaces, calm reading areas |
-| `#293241` | Ink navy: body text, contrast, dense data labels |
+| `#293241` | Ink navy: navigation, decision brief, body text, and data labels |
+
+Semantic green and deep red distinguish positive and blocked states; each state also has a text label. Motion is restrained and respects reduced-motion preferences. [Design system and review notes](docs/design-system.md).
 
 ## Live application
 
@@ -72,7 +76,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Open <http://127.0.0.1:8000/>. SQLite initializes at `data/platform.db`; set `PLANTCORE_DB` to use another path. The desktop interface targets a viewport of at least 1120 pixels.
+Open <http://127.0.0.1:8000/>. SQLite initializes at `data/platform.db`; set `PLANTCORE_DB` to use another path. The interface supports desktop, tablet, and mobile layouts. Dense schedules, tables, and charts scroll within their panels on narrow screens.
 
 ### Docker
 
@@ -109,6 +113,7 @@ python scripts/validate_visualizations.py
 node --check web/app.js
 node --check web/enterprise.js
 node --check web/visualizations.js
+node --check web/experience.js
 ```
 
 The regression suite covers scheduling constraints, quantity conservation, shared capacity, scenario isolation, file validation, exports, decision persistence, release gates, allocation, action dependencies, cost sharing, reproducible simulations, improvement guardrails, and all 30 visual aggregates. The live upload audit is documented in [`docs/live-upload-verification.md`](docs/live-upload-verification.md).
@@ -131,7 +136,7 @@ CSV / XLSX / JSON → importers.py → scenarios.py → SQLite store
 | Event ledger and replay | `app/workflows.py` |
 | SQLite persistence | `app/store.py` |
 | Import and schema validation | `app/importers.py`, `app/scenarios.py` |
-| Desktop UI and chart components | `web/` |
+| Responsive UI, navigation, charts, and reports | `web/` |
 | Pyodide worker and Pages packaging | `site/`, `scripts/build_pages.py` |
 | Regression and scenario sweep | `tests/`, `scripts/validate_scenarios.py` |
 
@@ -149,6 +154,7 @@ CSV / XLSX / JSON → importers.py → scenarios.py → SQLite store
 - [Project report](project-report.md) — technical design, formulas, development history, and operating limits.
 - [Requirement coverage](docs/requirement-coverage.md) — feature-by-feature coverage review.
 - [Live upload verification](docs/live-upload-verification.md) — browser audit of upload, recalculation, reload, and report export.
+- [Design system and review notes](docs/design-system.md) — visual foundations, interaction patterns, responsive behavior, and release verification.
 
 ## License and status
 

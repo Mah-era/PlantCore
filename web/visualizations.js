@@ -78,13 +78,31 @@ function visualTable(rows) {
 function buildVisuals(a, actions, audit) {
   const charts = [],
     add = (category, title, unit, note, rows, html) =>
-      charts.push({ category, title, unit, note, rows, html:
-        !rows.length && category === "Execution"
-          ? emptyChart("No matching actions or events recorded in this scenario.")
-          : html });
+      charts.push({
+        category,
+        title,
+        unit,
+        note,
+        rows,
+        html:
+          !rows.length && category === "Execution"
+            ? emptyChart(
+                "No matching actions or events recorded in this scenario.",
+              )
+            : html,
+      });
   const bar = (category, title, unit, note, rows, signed = false) =>
     add(category, title, unit, note, rows, visualBar(rows, unit, signed));
-  const series = (category, title, unit, note, rows, lines, percent = false, options = {}) =>
+  const series = (
+    category,
+    title,
+    unit,
+    note,
+    rows,
+    lines,
+    percent = false,
+    options = {},
+  ) =>
     add(
       category,
       title,
@@ -173,10 +191,14 @@ function buildVisuals(a, actions, audit) {
     })),
   );
   // Include every shipment event, including dates outside the deadline range.
-  const dueDays = [...new Set([
-    ...p.map((r) => r.due_date),
-    ...feasible.map((r) => r.plan.expected_ship),
-  ])].filter(Boolean).sort();
+  const dueDays = [
+    ...new Set([
+      ...p.map((r) => r.due_date),
+      ...feasible.map((r) => r.plan.expected_ship),
+    ]),
+  ]
+    .filter(Boolean)
+    .sort();
   const due = dueDays.map((date) => ({
     date,
     required: p
@@ -501,7 +523,8 @@ function buildVisuals(a, actions, audit) {
   return charts;
 }
 function visualPanel(c, index, a, exporting = false) {
-  return `<section class="card panel visual-panel" data-category="${esc(c.category)}"><div class="card-head"><div><span class="source-label">${esc(c.category)} · ${esc(c.unit)}</span><h2>${esc(c.title)}</h2></div>${exporting ? "" : `<button class="quiet small" onclick="exportVisualCSV(${index})">↓ Data</button>`}</div>${c.html}<p class="chart-foot">${esc(c.note)}</p><p class="chart-foot">Source: ${esc(a.scenario.name)} · as of ${esc(a.as_of)} · ${a.scenario.synthetic ? "simulated data" : "uploaded data"}</p>${visualTable(c.rows)}</section>`;
+  c = { ...c, html: frameCharts(c.html) };
+  return `<section class="card panel visual-panel" data-category="${esc(c.category)}"><div class="card-head"><div><span class="source-label">${String(index + 1).padStart(2, "0")} / ${esc(c.category)} · ${esc(c.unit)}</span><h2>${esc(c.title)}</h2></div>${exporting ? "" : `<button class="quiet small" aria-label="Download data: ${esc(c.title)}" title="Download chart data as CSV" onclick="exportVisualCSV(${index})">↓ Data</button>`}</div>${c.html}<p class="chart-foot">${esc(c.note)}</p><p class="chart-foot">Source: ${esc(a.scenario.name)} · as of ${esc(a.as_of)} · ${a.scenario.synthetic ? "simulated data" : "uploaded data"}</p>${visualTable(c.rows)}</section>`;
 }
 async function visualAnalytics() {
   const [a, actions, audit] = await Promise.all([
@@ -527,7 +550,9 @@ function renderVisualGallery() {
       `${charts.length} analytical views connect the active file to delivery, capacity, cost, quality and execution decisions. Missing evidence remains explicit.`,
       `<button class="primary" onclick="downloadVisualReport()">↓ Download visual report</button>`,
     ) +
-    `<div class="toolbar visual-filters">${categories.map((c) => `<button class="${c === visualCategory ? "primary" : "secondary"}" onclick="visualCategory=${jsarg(c)};renderVisualGallery()">${esc(c)}</button>`).join("")}<span class="muted">${visible.length} views · hover chart marks or expand source tables</span></div><div class="visual-grid">${visible.map(({ c, i }) => visualPanel(c, i, a)).join("")}</div>`;
+    `<div class="toolbar visual-filters" role="group" aria-label="Filter visual analytics">${categories.map((c) => `<button class="${c === visualCategory ? "primary" : "secondary"}" aria-pressed="${c === visualCategory}" onclick="visualCategory=${jsarg(c)};renderVisualGallery()">${esc(c)}</button>`).join("")}<span class="muted" role="status">${visible.length} views · inspect marks or expand source tables</span></div><div class="visual-grid">${visible.map(({ c, i }) => visualPanel(c, i, a)).join("")}</div>`;
+  if (typeof finishWorkspacePresentation === "function")
+    finishWorkspacePresentation();
 }
 function saveVisualBlob(content, type, name) {
   const url = URL.createObjectURL(new Blob([content], { type }));
@@ -567,9 +592,11 @@ async function downloadVisualReport() {
       api("/audit"),
     ]);
     const charts = buildVisuals(a, actions, audit);
-    const styles = await (await fetch("./app.css")).text();
+    const styles = await (
+      await fetch(document.querySelector('link[rel="stylesheet"]').href)
+    ).text();
     saveVisualBlob(
-      `<!doctype html><html><head><meta charset="utf-8"><title>PlantCore visual report</title><style>${styles}body{min-width:0;background:#f4f7fa;padding:32px}.visual-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.visual-panel{break-inside:avoid;overflow:hidden}.chart{width:100%}h1{font-size:30px}.table-wrap{overflow:auto;max-height:400px}@media print{body{padding:0}.visual-grid{display:block}.visual-panel{margin-bottom:20px}details{display:none}}</style></head><body><h1>PlantCore · Visual analysis report</h1><p>${esc(a.scenario.name)} · as of ${esc(a.as_of)} · ${a.scenario.synthetic ? "Simulated data" : "Uploaded data"} · ${charts.length} analytical views</p><p>Forecasts and cost exposure are scenario estimates. Historical charts use supplied observations only. Expand chart data to inspect the underlying values. This report is self-contained and printable.</p><div class="visual-grid">${charts.map((c, i) => visualPanel(c, i, a, true)).join("")}</div></body></html>`,
+      `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PlantCore visual report</title><style>${styles}body{padding:40px;max-width:1500px;margin:auto}.report-header{border-bottom:2px solid var(--orange);padding-bottom:28px;margin-bottom:30px}.report-header h1{font-size:38px;letter-spacing:-1.4px;font-weight:550}.report-header p{max-width:850px;color:var(--muted)}.table-wrap{max-height:400px}@media(max-width:680px){body{padding:20px}.report-header h1{font-size:28px}}@media print{body{padding:0}.visual-grid{display:block}.visual-panel{margin-bottom:20px}details{display:none}}</style></head><body><header class="report-header"><span class="eyebrow">PlantCore / Production intelligence</span><h1>Visual analysis report</h1><p>${esc(a.scenario.name)} · as of ${esc(a.as_of)} · ${a.scenario.synthetic ? "Simulated data" : "Uploaded data"} · ${charts.length} analytical views</p><p>Forecasts and cost exposure are scenario estimates. Historical charts use supplied observations only. Expand chart data to inspect the underlying values. This report is self-contained and printable.</p></header><div class="visual-grid">${charts.map((c, i) => visualPanel(c, i, a, true)).join("")}</div></body></html>`,
       "text/html;charset=utf-8",
       "plantcore-visual-report.html",
     );

@@ -1,6 +1,9 @@
 /* A local API transport for the GitHub Pages build. No file leaves this browser. */
 (() => {
-  const worker = new Worker("./python-worker.js");
+  const adapterURL = new URL(document.currentScript.src);
+  const workerURL = new URL("./python-worker.js", adapterURL);
+  workerURL.search = adapterURL.search;
+  const worker = new Worker(workerURL);
   const pending = new Map();
   let nextId = 0;
   const nativeFetch = window.fetch.bind(window);
