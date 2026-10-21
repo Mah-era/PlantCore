@@ -107,14 +107,19 @@ function finishWorkspacePresentation() {
   });
   document
     .querySelectorAll(
-      "#content input:not([aria-label]), #content select:not([aria-label])",
+      "#content input:not([aria-label]), #content select:not([aria-label]), #content textarea:not([aria-label])",
     )
-    .forEach((field) => {
+    .forEach((field, index) => {
       if (field.labels?.length) return;
+      const label = field.closest(".field")?.querySelector("label");
+      if (label) {
+        field.id ||= `workspace-field-${state.page}-${index}`;
+        label.htmlFor = field.id;
+        return;
+      }
       field.setAttribute(
         "aria-label",
         field.placeholder ||
-          field.closest(".field")?.querySelector("label")?.textContent ||
           field.options?.[0]?.textContent ||
           field.name ||
           "Filter",
