@@ -156,6 +156,10 @@ CSV / XLSX / JSON → importers.py → scenarios.py → SQLite store
 - [Live upload verification](docs/live-upload-verification.md) — browser audit of upload, recalculation, reload, and report export.
 - [Design system and review notes](docs/design-system.md) — visual foundations, interaction patterns, responsive behavior, and release verification.
 
+## Release status
+
+The responsive Operations Studio redesign is deployed from `main`. The latest release has passed the repository quality workflow and a public GitHub Pages upload → analysis → five-report download → reload audit. See [live verification](docs/live-upload-verification.md) for the exercised results and [design-system.md](docs/design-system.md) for the detailed review record.
+
 ## License and status
 
 PlantCore is an actively developed demonstration and decision-support platform using documented synthetic data. Review the calculation boundaries before using outputs in operational or commercial decisions.

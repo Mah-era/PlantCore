@@ -2,7 +2,7 @@
 
 ## Project report and implementation record
 
-**Report date:** 16 October 2026 (Asia/Dhaka)
+**Report date:** 23 October 2026 (Asia/Dhaka)
 **Repository:** `mah-era/PlantCore`  
 **Application:** FastAPI and SQLite decision workspace, available as a local server and an interactive browser build on GitHub Pages
 **Implementation status:** Version 0.2 professional desktop decision workspace with browser deployment; production deployment gates remain explicit
@@ -555,7 +555,7 @@ Every workspace has a question it answers. The control tower identifies exceptio
 
 The desktop design uses a navy navigation rail, slate typography, white analytical surfaces, restrained teal for favorable performance, amber for caution, and muted red for delivery/quality exposure. System fonts replace externally loaded fonts. Page headings, section titles, KPI labels, financial values, captions, tables and form fields follow a consistent hierarchy. Number formatting uses USD, explicit percentages and grouped units.
 
-The desktop minimum width is 1120 pixels; validation included a 1440 × 1000 viewport. Mobile design is intentionally excluded in accordance with the user’s request. Keyboard focus outlines, accessible dialog titles, text status labels, chart titles, SVG labels and tooltips support usability. This is not a claim of completed WCAG conformance testing.
+The Operations Studio supports desktop, tablet, and mobile layouts; validation included 1440 × 960 desktop, 768 × 1024 tablet, and 390 × 844 mobile viewports. Dense schedules, tables, and charts remain in bounded scroll regions. Keyboard focus outlines, accessible dialog titles, text status labels, chart titles, SVG labels, tooltips, drawer focus management, skip-link focus, and modal controls support usability. This is not a claim of completed WCAG conformance testing.
 
 Browser prompt/confirm workflows for actions, commitments and rule review have been replaced by structured dialogs. A rejected management rule is an explicit choice, not the side effect of cancelling a confirmation. Forms retain input when server validation fails and show the error inside the dialog. Mutation controls disable during submission.
 

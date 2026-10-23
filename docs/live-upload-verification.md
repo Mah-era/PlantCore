@@ -1,10 +1,10 @@
-# Live upload and report verification — 17 October 2026
+# Live upload and report verification — 23 October 2026
 
 Target: https://mah-era.github.io/PlantCore/
 
 ## Browser workflow exercised
 
-Used the deployed GitHub Pages application and its Python Web Worker, with actual file chooser uploads and report downloads. The files were synthetic test inputs, not operational factory data.
+Used the deployed GitHub Pages application and its Python Web Worker, with actual file chooser uploads and report downloads. The files were synthetic test inputs, not operational factory data. This review also covered the Operations Studio redesign, responsive layouts, keyboard navigation, cache-versioned assets, and reload persistence.
 
 | Upload | Orders | Units | On time | Late | Blocked | Expected delivery exposure |
 |---|---:|---:|---:|---:|---:|---:|
@@ -35,4 +35,4 @@ Regression coverage includes early, late, and blocked orders sharing one deadlin
 
 ## Scope of conclusion
 
-These checks verify the exercised upload → analysis → workspace → download and reload paths. They do not prove every possible external file, workflow mutation, browser, or numerical edge case. Unsupported or invalid inputs still require schema validation; missing source history remains unavailable.
+These checks verify the exercised upload → analysis → workspace → download and reload paths on the deployed release. They do not prove every possible external file, workflow mutation, browser, print layout, or numerical edge case. Unsupported or invalid inputs still require schema validation; missing source history remains unavailable. The redesign review is recorded in [Design system and review notes](design-system.md).
