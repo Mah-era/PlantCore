@@ -76,8 +76,8 @@ function toggleNavigation(
     active ? "Close workspace navigation" : "Open workspace navigation",
   );
   $(".nav-backdrop").hidden = !active;
-  $(".sidebar").inert = narrowViewport.matches && !active;
-  $(".main").inert = active;
+  $(".sidebar").inert = !!state.datasetBusy || (narrowViewport.matches && !active);
+  $(".main").inert = !!state.datasetBusy || active;
   if (active) {
     $(".sidebar").setAttribute("role", "dialog");
     $(".sidebar").setAttribute("aria-modal", "true");

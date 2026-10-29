@@ -70,8 +70,26 @@ async function loadScenarioCatalog() {
     ? "Synthetic scenario"
     : "Uploaded order file";
 }
+function beginDatasetChange(message) {
+  state.datasetBusy = true;
+  const surfaces = [...document.querySelectorAll("main, aside")].map(el => [el, el.inert]);
+  surfaces.forEach(([el]) => { el.inert = true; });
+  const progress = document.createElement("div");
+  progress.className = "import-progress";
+  progress.setAttribute("role", "status");
+  progress.setAttribute("aria-live", "polite");
+  progress.textContent = message;
+  document.body.appendChild(progress);
+  return () => {
+    state.datasetBusy = false;
+    progress.remove();
+    if (typeof toggleNavigation === "function") toggleNavigation(false);
+    else surfaces.forEach(([el, wasInert]) => { el.inert = wasInert; });
+  };
+}
 async function changeScenario(id) {
   if (state.datasetBusy) return;
+  const finish = beginDatasetChange("Loading and analyzing selected dataset…");
   try {
     await api("/scenarios/select", {
       method: "POST",
@@ -94,19 +112,13 @@ async function changeScenario(id) {
   } catch (e) {
     toast(e.message);
     await loadScenarioCatalog();
+  } finally {
+    finish();
   }
 }
 async function uploadScenario(file) {
   if (!file || state.datasetBusy) return;
-  state.datasetBusy = true;
-  const surfaces = [...document.querySelectorAll("main, aside")].map((el) => [el, el.inert]);
-  surfaces.forEach(([el]) => { el.inert = true; });
-  const progress = document.createElement("div");
-  progress.className = "import-progress";
-  progress.setAttribute("role", "status");
-  progress.setAttribute("aria-live", "polite");
-  progress.textContent = "Validating and analyzing " + file.name + "…";
-  document.body.appendChild(progress);
+  const finish = beginDatasetChange("Validating and analyzing " + file.name + "…");
   try {
     if (file.size > 3000000) throw new Error("Scenario file exceeds 3 MB");
     const response = await fetch(
@@ -133,12 +145,11 @@ async function uploadScenario(file) {
     toast(e.message);
   } finally {
     $("#scenarioUpload").value = "";
-    progress.remove();
-    surfaces.forEach(([el, wasInert]) => { el.inert = wasInert; });
-    state.datasetBusy = false;
+    finish();
   }
 }
 async function downloadReport(type) {
+  if (state.datasetBusy) return;
   if (!type) return;
   if (type === "visual-report") return downloadVisualReport();
   const path =
